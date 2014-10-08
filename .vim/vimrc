@@ -1,0 +1,252 @@
+" vim: ft=vim fdm=marker
+" plugin {{{1
+if has('vim_starting')
+	set nocompatible               " Be iMproved
+	set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+call neobundle#begin(expand('~/.vim/bundle/'))
+NeoBundleFetch 'Shougo/neobundle.vim'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/neomru.vim'
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'ervandew/supertab'
+NeoBundle 'tpope/vim-commentary'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'tpope/vim-unimpaired'
+NeoBundle 'tpope/vim-eunuch'
+NeoBundle 'tpope/vim-vinegar'
+NeoBundle 'tpope/vim-repeat'
+NeoBundle 'travitch/hasksyn'
+NeoBundle 'bling/vim-bufferline'
+NeoBundle 'moll/vim-bbye'
+NeoBundle 'cmdalias.vim'
+NeoBundle 'Shougo/vimproc.vim', {
+			\ 'build': {
+			\   'unix':  'make -f make_unix.mak',
+			\ },
+			\ }
+NeoBundleLazy 'Shougo/vimshell.vim', {
+			\ 'autoload': {
+			\   'commands': 'VimShell',
+			\ },
+			\ }
+NeoBundleLazy 'xolox/vim-shell', {
+			\ 'depends': 'xolox/vim-misc',
+			\ 'autoload': {
+			\   'commands': 'MakeWithShell',
+			\ },
+			\ }
+NeoBundleLazy 'majutsushi/tagbar', {
+			\ 'autoload': {
+			\   'commands': 'TagbarToggle',
+			\ },
+			\ }
+NeoBundleLazy 'scrooloose/syntastic', {
+			\ 'autoload': {
+			\   'filetypes': ['c','cpp','lua',],
+			\ },
+			\ }
+NeoBundleLazy 'xolox/vim-notes', {
+			\ 'depends': 'xolox/vim-misc',
+			\ 'autoload': {
+			\   'commands': ['Note','MostRecentNote',],
+			\ },
+			\ }
+NeoBundleLazy 'tpope/vim-endwise', {
+			\ 'autoload': {
+			\   'filetypes': ['vim','lua',],
+			\ },
+			\ }
+NeoBundleLazy 'amdt/vim-niji', {
+			\ 'autoload': {
+			\   'filetypes': ['scheme',],
+			\ },
+			\ }
+NeoBundleLazy 'mbbill/undotree', {
+			\ 'autoload': {
+			\   'commands': ['UndotreeToggle',],
+			\ },
+			\ }
+NeoBundleLazy 'xolox/vim-misc'
+NeoBundleLazy 'rking/ag.vim'
+NeoBundleLazy 'tpope/vim-abolish'
+call neobundle#end()
+runtime! macros/matchit.vim
+
+" set {{{1
+filetype plugin indent on
+set undofile
+set undodir=~/.vim/.undo
+set viminfo+=n~/.vim/.viminfo
+set backspace=2
+set shiftwidth=2 tabstop=2 softtabstop=2
+set mouse=nv
+set t_vb=
+set history=1000
+set scrolloff=2
+set number
+set autoindent
+set hidden
+set incsearch
+set laststatus=2
+set timeoutlen=500
+set updatetime=2000
+set wildmenu
+set showcmd
+set gdefault
+set lazyredraw
+set virtualedit=onemore
+syntax enable
+set background=dark
+colorscheme solarized
+set statusline=%<%F\ %h%m%r%=%-12.(%l,%c%V%)\ %P
+set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+
+" map {{{1
+let mapleader = ' '
+ino ii <Esc>`^
+ino ij <Esc>`^
+nn ; :
+nn : ;
+xn ; :
+xn : ;
+nn <C-j> <C-i>
+nn <C-k> <C-o>
+nn <silent> <Leader>q :q<CR>
+nn <silent> <Leader>x :x<CR>
+nn <silent> <Leader>e :up<CR>
+nn <silent> <Leader>v :e $MYVIMRC<CR>
+nn <silent> <Leader>s :sh<CR>
+nn <silent> <S-Tab> :bp<CR>
+nn <silent> <Tab> :bn<CR>
+nn <silent> <C-@> :noh<CR>
+nn <silent> <C-l> :noh<CR><C-l>
+ino <C-f> <C-o>
+no! <C-j> <Down>
+no! <C-k> <Up>
+no! <C-h> <Left>
+no! <C-l> <Right>
+ino <C-A> <C-o>^
+cno <C-A> <Home>
+ino <expr> <C-E> col('.')>strlen(getline('.'))?"\<Lt>C-E>":"\<Lt>End>"
+nn mm :!sdcv <cword><CR>
+
+" autocmd {{{1
+augroup self
+	au!
+	au BufEnter,BufNewFile * silent! lcd %:p:h
+	au BufWritePost $MYVIMRC so %
+	au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+	au BufReadPost,BufWrite * nn<buffer> q; q:
+	au BufLeave /home/sid/Downloads/cs/**/*.in up
+	au BufNewFile *.cpp r ~/.vim/template/template.cpp|1d|normal ]]
+augroup END
+
+" bookmark {{{1
+function! Jump(char) abort
+	let [bufnr, line, column, rest] = getpos("'".a:char)
+	if bufnr == 0 && line > 0 || bufnr("%") == bufnr
+		execute "normal! '".a:char
+	elseif bufnr == 0
+		echohl ErrorMsg | echom "E20: Mark not set" | echohl None
+	else
+		execute "edit #".bufnr
+	endif
+endfunction
+nnoremap <silent> ' :call Jump(nr2char(getchar()))<CR>
+
+" clip {{{1
+xn <silent> <C-c> y:call system('xsel -ib', @")<CR>
+nn <silent> <C-c> :silent w !xsel -ib<CR>
+nn <silent> cp        :let @" = system('xsel -ob')<CR>p
+nn <silent> cP        :let @" = system('xsel -ob')<CR>P
+nn <silent> c<Space>p :let @" = system('xsel -ob')<Bar>normal =p<CR>
+nn <silent> c<Space>P :let @" = system('xsel -ob')<Bar>normal =P<CR>
+nn <silent> sp        :let @" = system('xsel -op')<CR>p
+nn <silent> sP        :let @" = system('xsel -op')<CR>P
+nn <silent> s<Space>p :let @" = system('xsel -op')<Bar>normal =p<CR>
+nn <silent> s<Space>P :let @" = system('xsel -op')<Bar>normal =P<CR>
+
+" netrw {{{1
+let g:netrw_localrmdir = 'rm -r'
+
+" tagbar {{{1
+nn <silent> <F4> :TagbarToggle<CR>
+
+" undotree {{{1
+nn <silent> <F5> :UndotreeToggle<CR>
+
+" unite.vim {{{1
+call unite#custom#source('file,file/new,buffer,file_rec,file_rec/async,file_mru',
+			\ 'matchers', 'matcher_fuzzy')
+call unite#custom#profile('default', 'context', {
+			\ 'winheight': 12,
+			\ 'direction': 'botright',
+			\ })
+call unite#filters#sorter_default#use(['sorter_rank'])
+" call unite#custom#source('file_rec/async','sorters','sorter_rank', )
+let g:unite_source_history_yank_enable=1
+if executable('ag')
+	let g:unite_source_grep_command='ag'
+	let g:unite_source_grep_default_opts='--hidden --nocolor --nogroup -S'
+	let g:unite_source_grep_recursive_opt=''
+endif
+nn <silent> <Leader>f :Unite -auto-resize -start-insert file_mru file_rec/async<CR>
+nn <silent> <Leader>u :Unite -auto-resize -start-insert file_mru<CR>
+nn <silent> <Leader>g :Unite -auto-resize -no-quit -no-empty -keep-focus grep:.<CR>
+nn <silent> <Leader>y :Unite history/yank<CR>
+
+" vim-bbye {{{1
+nn <silent> <Leader>d :Bdelete<CR>
+
+" vim-commentary {{{1
+xmap <Space>c  <Plug>Commentary
+nmap <Space>c  <Plug>Commentary
+omap ic        <Plug>Commentary
+nmap <Space>cc <Plug>CommentaryLine
+nmap cic       <Plug>ChangeCommentary
+nmap <Space>cu <Plug>Commentary<Plug>Commentary
+
+" vim-surround {{{1
+let g:surround_no_mappings = 1
+nmap ds <Plug>Dsurround
+nmap cs <Plug>Csurround
+nmap s  <Plug>Ysurround
+nmap S  <Plug>YSurround
+nmap ss <Plug>Yssurround
+nmap SS <Plug>YSsurround
+xmap s  <Plug>VSurround
+xmap S  <Plug>VgSurround
+nn <silent> <Plug>DSurroundSpace f<Space>xF<Space>x
+			\:call repeat#set("\<Plug>DSurroundSpace")<CR>
+nmap ds<Space> <Plug>DSurroundSpace
+
+" vim-unimpaired {{{1
+nmap <Leader>p =p
+nmap <Leader>P =P
+
+" visualstar {{{1
+function! VSetSearch()
+	let temp = @s
+	norm! gv"sy
+	let @/ = '\V' . substitute(escape(@s, '\'), '\n', '\\n', 'g')
+	let @s = temp
+endfunction
+xn * :<C-u>call VSetSearch()<CR>//<CR>N
+xn # :<C-u>call VSetSearch()<CR>??<CR>N
+
+" yank {{{1
+nmap <silent> y ;set opfunc=Yank<CR>g@
+nn yy yy']
+xn y ygv<Esc>
+nn Y y$$
+function! Yank(type, ...)
+	if a:type == 'line'
+		exe "normal! '[V']y"
+		exe "normal! ']"
+	else
+		exe "normal! `[v`]y"
+		exe "normal! `]"
+	endif
+endfunction
+
