@@ -1,6 +1,7 @@
 /*
 !.gitignore
 !.config/
+!.vifm/
 !.vim/
 !.tmux.conf
 !.bash_aliases
