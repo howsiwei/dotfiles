@@ -1,0 +1,55 @@
+# vim: fdm=marker
+# option {{{
+set adjust-open width
+# set render-loading false
+set pages-per-row 1
+# }}}
+# color {{{
+set font                        "inconsolata 13"
+set default-bg                  "#050505"
+set default-fg                  "#202020"
+#
+set statusbar-bg                "#050505"
+set statusbar-fg                "#b0b0b0"
+#
+set inputbar-bg                 "#050505"
+set inputbar-fg                 "#b0b0b0"
+#
+set notification-error-bg       "#AC4142"
+set notification-error-fg       "#050505"
+#
+set notification-warning-bg     "#AC4142"
+set notification-warning-fg     "#050505"
+#
+# set highlight-color             "#F4BF75"
+# set highlight-active-color      "#6A9FB5"
+#
+# set completion-highlight-fg     "#050505"
+# set completion-highlight-bg     "#233436"
+#
+set completion-bg               "#050505"
+set completion-fg               "#b0b0b0"
+#
+set notification-bg             "#90A959"
+set notification-fg             "#050505"
+#
+set recolor-lightcolor          "#050505"
+set recolor-darkcolor           "#b0b0b0"
+set recolor                     "true"
+#
+# setting recolor-keep true will keep any color your pdf has.
+# if it is false, it'll just be black and white
+set recolor-keephue             "true"
+# }}}
+# map {{{
+map i scroll down
+map 9 scroll up
+map r scroll down
+map 4 scroll up
+map e scroll up
+map o scroll up
+map I navigate next
+map ( navigate previous
+unmap q
+map x quit
+# }}}
