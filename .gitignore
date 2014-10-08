@@ -1,0 +1,10 @@
+/*
+!.gitignore
+# !.config/
+# !.vim/
+!.tmux.conf
+!.bash_aliases
+!.gitconfig
+!.guile
+!.inputrc
+!.profile

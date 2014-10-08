@@ -1,0 +1,26 @@
+set editing-mode vi
+set show-mode-in-prompt on
+set skip-completed-text on
+
+set keymap vi-command
+
+set keymap vi-insert
+"\C-f": vi-movement-mode
+"\C-a": beginning-of-line
+"\C-e": end-of-line
+"\C-j": history-search-forward
+"\C-k": history-search-backward
+"\e[D": backward-char
+"\e[C": forward-char
+"\eOD": backward-word
+"\eOC": forward-word
+"\e[1;5D": backward-word
+"\e[1;5C": forward-word
+"\C-h": backward-kill-word
+"\C-t": kill-line
+"\e[B": history-search-forward
+"\e[A": history-search-backward
+"\C-l": clear-screen
+"\e ": clear-screen
+"\e-": "-1\C-m"
+
