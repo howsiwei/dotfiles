@@ -1,0 +1,9 @@
+/*
+!.gitignore
+!after/
+!doc/
+!ftplugin/
+!syntax/
+!template/
+!filetype.vim
+!vimrc
