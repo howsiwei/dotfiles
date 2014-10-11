@@ -10,26 +10,23 @@
 
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
-    # include .bashrc if it exists
-    if [ -f "$HOME/.bashrc" ]; then
-	. "$HOME/.bashrc"
-    fi
+	# include .bashrc if it exists
+	if [ -f "$HOME/.bashrc" ]; then
+		. "$HOME/.bashrc"
+	fi
 fi
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
+	PATH="$HOME/bin:$PATH"
 fi
 
 export EDITOR=vi
 export VISUAL=vi
-export TERM=xterm-256color
 export TERMINAL=xterm
 export XDG_CONFIG_HOME=~/.config
 export CWFLAGS='-Wall -Wextra -Wno-sign-compare '
 export CFLAGS="-std=c11 $CWFLAGS"
 export CXXFLAGS="-std=c++11 $CWFLAGS"
 export CWNOUNUSEDFLAGS='-Wno-unused-variable -Wno-unused-parameter '
-
-eval `keychain --eval id_rsa`
 

@@ -20,9 +20,11 @@ alias sd='sdcv'
 alias speedtest='~/Downloads/linux/speedtest-cli/speedtest_cli.py'
 alias pi='ping google.com'
 alias make5='make LDLIBS="-lcs50 -lm"'
+alias kc='eval `keychain --eval id_rsa`'
 
 md() { mkdir -p "$@" && cd "$_"; }
 timevi() { rm -f "$@" && vi --startuptime "$_"; }
 
-CDPATH=.:~:~/Downloads
+TERM=xterm-256color
+CDPATH=.:~/Downloads
 
