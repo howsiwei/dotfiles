@@ -15,7 +15,6 @@ alias gu='guile'
 alias lj='rlwrap luajit'
 alias oc='octave -q'
 alias ot='octave -q --traditional'
-alias tcl='rlwrap tclsh8.6'
 alias sd='sdcv'
 alias speedtest='~/Downloads/linux/speedtest-cli/speedtest_cli.py'
 alias pi='ping google.com'
@@ -24,7 +23,4 @@ alias kc='eval `keychain --eval id_rsa`'
 
 md() { mkdir -p "$@" && cd "$_"; }
 timevi() { rm -f "$@" && vi --startuptime "$_"; }
-
-TERM=xterm-256color
-CDPATH=.:~/Downloads
 
