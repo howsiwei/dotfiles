@@ -1,8 +1,8 @@
 # vim: fdm=marker
 # option {{{
 set adjust-open width
-# set render-loading false
 set pages-per-row 1
+set scroll-full-overlap 0.05
 # }}}
 # color {{{
 set font                        "inconsolata 13"
