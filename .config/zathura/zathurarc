@@ -3,6 +3,7 @@
 set adjust-open width
 # set render-loading false
 set pages-per-row 1
+set selection-clipboard clipboard
 # }}}
 # color {{{
 set font                        "inconsolata 13"
@@ -10,7 +11,7 @@ set default-bg                  "#050505"
 set default-fg                  "#202020"
 #
 set statusbar-bg                "#050505"
-set statusbar-fg                "#b0b0b0"
+set statusbar-fg                "#909090"
 #
 set inputbar-bg                 "#050505"
 set inputbar-fg                 "#b0b0b0"
