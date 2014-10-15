@@ -6,7 +6,7 @@ set pages-per-row 1
 set selection-clipboard clipboard
 # }}}
 # color {{{
-set font                        "inconsolata 13"
+set font                        "13"
 set default-bg                  "#050505"
 set default-fg                  "#202020"
 #
