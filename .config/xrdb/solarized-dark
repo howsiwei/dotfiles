@@ -65,4 +65,6 @@
 *color15:                 S_base3
 
 *faceName: DejaVuSansMono
-*faceSize: 15
+*faceSize: 14
+urxvt.scrollBar: false
+urxvt.font:     xft:DejavuSansMono:pixelsize=12

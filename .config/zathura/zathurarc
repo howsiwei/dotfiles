@@ -2,15 +2,19 @@
 # option {{{
 set adjust-open width
 set pages-per-row 1
+<<<<<<< HEAD
 set scroll-full-overlap 0.05
+=======
+set selection-clipboard clipboard
+>>>>>>> ee9b06b92f379b433edaca4a082e7ab5e3e6bf71
 # }}}
 # color {{{
-set font                        "inconsolata 13"
+set font                        "13"
 set default-bg                  "#050505"
 set default-fg                  "#202020"
 #
 set statusbar-bg                "#050505"
-set statusbar-fg                "#b0b0b0"
+set statusbar-fg                "#909090"
 #
 set inputbar-bg                 "#050505"
 set inputbar-fg                 "#b0b0b0"
