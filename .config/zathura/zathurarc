@@ -2,11 +2,8 @@
 # option {{{
 set adjust-open width
 set pages-per-row 1
-<<<<<<< HEAD
 set scroll-full-overlap 0.05
-=======
 set selection-clipboard clipboard
->>>>>>> ee9b06b92f379b433edaca4a082e7ab5e3e6bf71
 # }}}
 # color {{{
 set font                        "13"
