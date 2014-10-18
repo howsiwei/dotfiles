@@ -1,4 +1,4 @@
-setl commentstring=//\ %s
+setl commentstring=//%s
 setl noexpandtab tabstop=4 shiftwidth=4 softtabstop=4
 if !filereadable('Makefile') &&!filereadable('makefile')
 	if expand('%:p') =~ '.*/cs50/.*'
