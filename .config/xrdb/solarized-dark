@@ -1,7 +1,7 @@
 ! Solarized color scheme for the X Window System
 !
 ! http://ethanschoonover.com/solarized
-! vim: ft=xdefaults cms=\!\ %s
+! vim: ft=xdefaults cms=!%s
 
 
 ! Common
