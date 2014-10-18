@@ -88,6 +88,7 @@ set number
 set autoindent
 set hidden
 set incsearch
+set smartcase
 set laststatus=2
 set timeoutlen=500
 set updatetime=2000
@@ -134,6 +135,7 @@ nn mm :!sdcv <cword><CR>
 " autocmd {{{1
 augroup self
 	au!
+	au BufWinEnter * set formatoptions-=o
 	au BufEnter,BufNewFile * silent! lcd %:p:h
 	au BufWritePost $MYVIMRC so %
 	au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
