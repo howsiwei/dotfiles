@@ -24,7 +24,7 @@ fi
 export EDITOR=vi
 export VISUAL=vi
 export TERMINAL=xterm
-export XDG_CONFIG_HOME=~/.config
+export XDG_CONFIG_HOME="$HOME/.config"
 export CWFLAGS='-Wall -Wextra -Wno-sign-compare '
 export CFLAGS="-std=c11 $CWFLAGS"
 export CXXFLAGS="-std=c++11 $CWFLAGS"
