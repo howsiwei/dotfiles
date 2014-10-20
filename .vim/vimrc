@@ -25,11 +25,6 @@ NeoBundle 'Shougo/vimproc.vim', {
 			\   'unix':  'make -f make_unix.mak',
 			\ },
 			\ }
-NeoBundleLazy 'Shougo/vimshell.vim', {
-			\ 'autoload': {
-			\   'commands': 'VimShell',
-			\ },
-			\ }
 NeoBundleLazy 'xolox/vim-shell', {
 			\ 'depends': 'xolox/vim-misc',
 			\ 'autoload': {
