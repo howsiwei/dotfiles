@@ -165,6 +165,7 @@ nn <silent> s<Space>p :let @" = system('xsel -op')<Bar>normal =p<CR>
 nn <silent> s<Space>P :let @" = system('xsel -op')<Bar>normal =P<CR>
 
 " netrw {{{1
+let g:netrw_keepdir = 0
 let g:netrw_localrmdir = 'rm -r'
 
 " tagbar {{{1
