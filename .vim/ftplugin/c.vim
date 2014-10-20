@@ -1,10 +1,10 @@
 setl commentstring=//%s
 setl noexpandtab tabstop=4 shiftwidth=4 softtabstop=4
-if !filereadable('Makefile') &&!filereadable('makefile')
+if !filereadable('Makefile') && !filereadable('makefile')
 	if expand('%:p') =~ '.*/cs50/.*'
-		let &l:makeprg = 'make LDLIBS="-lcs50 -lm" '.expand('%:r')
+		let &l:makeprg = 'make LDLIBS="-lcs50 -lm" '.expand('%:t:r')
 	else
-		let &l:makeprg = 'make '.expand('%:r')
+		let &l:makeprg = 'make '.expand('%:t:r')
 	endif
 endif
 
