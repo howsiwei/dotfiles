@@ -14,8 +14,8 @@ let b:testfile_in  = b:testfile.'.in'
 let b:testfile_out = b:testfile.'.out'
 
 nn <buffer> <silent> <Leader>i :execute 'e '.b:testfile_in<CR>
-nn <buffer> <silent> <F7> :up<Bar>MakeWithShell<CR><CR>
-nn <buffer> <silent> <F8> :!./%:r<CR>
-nn <buffer> <silent> <F2> :execute '!./%:r < '.b:testfile_in<CR>
+nn <buffer> <silent> <F9> :up<Bar>MakeWithShell<CR><CR>
+nn <buffer> <silent> <F10> :!./%:r<CR>
+nn <buffer> <silent> <F3> :execute '!./%:r < '.b:testfile_in<CR>
 ino <buffer> {<CR> {<CR>}<Esc>O
 

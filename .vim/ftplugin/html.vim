@@ -1,1 +1,1 @@
-nn <buffer> <silent> <F7> :up<Bar>!w3m %<CR><CR>
+nn <buffer> <silent> <F9> :up<Bar>!w3m %<CR><CR>

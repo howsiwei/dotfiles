@@ -1,3 +1,3 @@
-nn <buffer> <silent> <F7> :up<Bar>:!ruby %<CR>
-nn <buffer> <silent> <F8> :up<Bar>:!ruby % < %<.in<CR>
+nn <buffer> <silent> <F9> :up<Bar>:!ruby %<CR>
+nn <buffer> <silent> <F10> :up<Bar>:!ruby % < %<.in<CR>
 

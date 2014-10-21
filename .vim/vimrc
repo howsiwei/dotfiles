@@ -169,10 +169,10 @@ let g:netrw_keepdir = 0
 let g:netrw_localrmdir = 'rm -r'
 
 " tagbar {{{1
-nn <silent> <F4> :TagbarToggle<CR>
+nn <silent> <F5> :TagbarToggle<CR>
 
 " undotree {{{1
-nn <silent> <F5> :UndotreeToggle<CR>
+nn <silent> <F6> :UndotreeToggle<CR>
 
 " unite.vim {{{1
 call unite#custom#source('file,file/new,buffer,file_rec,file_rec/async,file_mru',
