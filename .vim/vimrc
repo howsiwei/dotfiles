@@ -64,6 +64,7 @@ NeoBundleLazy 'mbbill/undotree', {
 NeoBundleLazy 'xolox/vim-misc'
 NeoBundleLazy 'rking/ag.vim'
 NeoBundleLazy 'tpope/vim-abolish'
+NeoBundleLocal ~/.vim/bundle_local
 call neobundle#end()
 runtime! macros/matchit.vim
 
