@@ -3,6 +3,7 @@
 !.config/
 !.vifm/
 !.vim/
+!bin/
 !.tmux.conf
 !.bash_aliases
 !.gitconfig
