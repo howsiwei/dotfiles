@@ -20,50 +20,51 @@ NeoBundle 'bling/vim-bufferline'
 NeoBundle 'moll/vim-bbye'
 NeoBundle 'cmdalias.vim'
 NeoBundle 'Shougo/vimproc.vim', {
-			\ 'build': {
-			\   'unix':  'make -f make_unix.mak',
-			\ },
-			\ }
+	\ 'build': {
+	\   'unix':  'make -f make_unix.mak',
+	\ },
+	\ }
 NeoBundleLazy 'xolox/vim-shell', {
-			\ 'depends': 'xolox/vim-misc',
-			\ 'autoload': {
-			\   'commands': 'MakeWithShell',
-			\ },
-			\ }
+	\ 'depends': 'xolox/vim-misc',
+	\ 'autoload': {
+	\   'commands': 'MakeWithShell',
+	\ },
+	\ }
 NeoBundleLazy 'majutsushi/tagbar', {
-			\ 'autoload': {
-			\   'commands': 'TagbarToggle',
-			\ },
-			\ }
+	\ 'autoload': {
+	\   'commands': 'TagbarToggle',
+	\ },
+	\ }
 NeoBundleLazy 'scrooloose/syntastic', {
-			\ 'autoload': {
-			\   'filetypes': ['c','cpp','lua',],
-			\ },
-			\ }
+	\ 'autoload': {
+	\   'filetypes': ['c','cpp','lua',],
+	\ },
+	\ }
 NeoBundleLazy 'xolox/vim-notes', {
-			\ 'depends': 'xolox/vim-misc',
-			\ 'autoload': {
-			\   'commands': ['Note','MostRecentNote',],
-			\ },
-			\ }
+	\ 'depends': 'xolox/vim-misc',
+	\ 'autoload': {
+	\   'commands': ['Note','MostRecentNote',],
+	\ },
+	\ }
 NeoBundleLazy 'tpope/vim-endwise', {
-			\ 'autoload': {
-			\   'filetypes': ['vim','lua',],
-			\ },
-			\ }
+	\ 'autoload': {
+	\   'filetypes': ['vim','lua',],
+	\ },
+	\ }
 NeoBundleLazy 'amdt/vim-niji', {
-			\ 'autoload': {
-			\   'filetypes': ['scheme',],
-			\ },
-			\ }
+	\ 'autoload': {
+	\   'filetypes': ['scheme',],
+	\ },
+	\ }
 NeoBundleLazy 'mbbill/undotree', {
-			\ 'autoload': {
-			\   'commands': ['UndotreeToggle',],
-			\ },
-			\ }
+	\ 'autoload': {
+	\   'commands': ['UndotreeToggle',],
+	\ },
+	\ }
 NeoBundleLazy 'xolox/vim-misc'
 NeoBundleLazy 'rking/ag.vim'
 NeoBundleLazy 'tpope/vim-abolish'
+NeoBundleLocal ~/.vim/bundle_local
 call neobundle#end()
 runtime! macros/matchit.vim
 
@@ -176,11 +177,11 @@ nn <silent> <F6> :UndotreeToggle<CR>
 
 " unite.vim {{{1
 call unite#custom#source('file,file/new,buffer,file_rec,file_rec/async,file_mru',
-			\ 'matchers', 'matcher_fuzzy')
+	\ 'matchers', 'matcher_fuzzy')
 call unite#custom#profile('default', 'context', {
-			\ 'winheight': 12,
-			\ 'direction': 'botright',
-			\ })
+	\ 'winheight': 12,
+	\ 'direction': 'botright',
+	\ })
 call unite#filters#sorter_default#use(['sorter_rank'])
 " call unite#custom#source('file_rec/async','sorters','sorter_rank', )
 let g:unite_source_history_yank_enable=1
@@ -216,7 +217,7 @@ nmap SS <Plug>YSsurround
 xmap s  <Plug>VSurround
 xmap S  <Plug>VgSurround
 nn <silent> <Plug>DSurroundSpace f<Space>xF<Space>x
-			\:call repeat#set("\<Plug>DSurroundSpace")<CR>
+	\:call repeat#set("\<Plug>DSurroundSpace")<CR>
 nmap ds<Space> <Plug>DSurroundSpace
 
 " vim-unimpaired {{{1

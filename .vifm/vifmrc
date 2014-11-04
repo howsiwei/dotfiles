@@ -1,4 +1,3 @@
-" vim: filetype=vim :
 " Sample configuration file for vifm (last updated: 27 Jun, 2013)
 " You can edit this file by hand.
 " The " character at the beginning of a line comments out the line.
@@ -9,7 +8,7 @@
 " If you would like to use another vi clone such Elvis or Vile
 " you will need to change this setting.
 
-set vicmd=vim
+set vicmd=vi
 " set vicmd=elvis\ -G\ termcap
 " set vicmd=vile
 
@@ -153,14 +152,14 @@ command vgrep vim "+grep %a"
 " program.
 
 " Pdf
-filetype *.pdf zathura --fork %f,apvlv %f,xpdf %f
+filetype *.pdf zathura --fork > /dev/null 2>&1 %f,apvlv %f,xpdf %f
 fileview *.pdf pdftotext -nopgbrk %c -
 
 " PostScript
 filextype *.ps,*.ps.gz gv %c %i &
 
 " Djvu
-filextype *.djvu zathura --fork %f,apvlv %f
+filextype *.djvu zathura --fork > /dev/null 2>&1 %f,apvlv %f
 
 " Audio
 filetype *.wav,*.mp3,*.flac,*.ogg,*.m4a
