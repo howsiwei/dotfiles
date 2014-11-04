@@ -1,6 +1,7 @@
 /*
 !.gitignore
 !after/
+!bundle_local/
 !doc/
 !ftplugin/
 !syntax/
