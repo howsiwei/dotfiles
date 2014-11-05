@@ -26,7 +26,7 @@ export VISUAL=vi
 export TERMINAL=xterm
 export XDG_CONFIG_HOME="$HOME/.config"
 export CWFLAGS='-Wall -Wextra -Wno-sign-compare'
-export CFLAGS="-std=c11 $CWFLAGS"
+export CFLAGS="-std=c99 $CWFLAGS"
 export CXXFLAGS="-std=c++11 $CWFLAGS"
 export CWNOUNUSEDFLAGS='-Wno-unused-variable -Wno-unused-but-set-variable -Wno-unused-parameter'
 
