@@ -1,1 +1,6 @@
-tmux new-window "vi $*"
+# vi: ft=sh
+fs=""
+for f in "$@"; do
+	fs="$fs \"$f\""
+done
+tmux new-window "vi $fs"
