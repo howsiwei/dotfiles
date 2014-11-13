@@ -171,6 +171,8 @@ fileviewer *.mp3 mp3info
 
 " Video
 filextype *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.vob,*.flv
+        \ {View using mpv}
+        \ mpv %f &,
         \ {View using ffplay}
         \ ffplay -fs %c,
         \ {View using Dragon}
@@ -189,7 +191,7 @@ filetype *.o nm %f | less
 " Image
 filextype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
         \ {View in sxiv}
-        \ sxiv,
+        \ sxiv %f &,
         \ {View in gpicview}
         \ gpicview %c,
 fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm convert -identify %f -verbose /dev/null
@@ -328,3 +330,9 @@ noremap <Space>q :q<CR>
 cnoremap <C-k> <Up>
 cnoremap <C-j> <Down>
 cnoremap <C-f> <C-g>
+
+" gimp
+filetype *.xcf
+       \ {gimp files}
+       \ gimp %f &,
+
