@@ -8,7 +8,7 @@
 " If you would like to use another vi clone such Elvis or Vile
 " you will need to change this setting.
 
-set vicmd=vi
+set vicmd=tmvi
 " set vicmd=elvis\ -G\ termcap
 " set vicmd=vile
 
@@ -280,7 +280,7 @@ nnoremap s :shell<cr>
 " nnoremap S :sort<cr>
 nnoremap S :!tmux new-window<CR>
 nnoremap w :view<cr>
-nnoremap o :set vicmd='tmvi'<CR>l:set vicmd='vi'<CR>
+" nnoremap o :set vicmd='tmvi'<CR>l:set vicmd='vi'<CR>
 " nnoremap o :!tmvi %f<cr>
 
 " Open file in the background using its default program

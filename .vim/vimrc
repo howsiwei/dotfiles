@@ -154,16 +154,16 @@ endfunction
 nnoremap <silent> ' :call Jump(nr2char(getchar()))<CR>
 
 " clip {{{1
-xn <silent> <C-c> y:call system('xsel -ib', @")<CR>
 nn <silent> <C-c> :silent w !xsel -ib<CR>
-nn <silent> cp        :let @" = system('xsel -ob')<CR>p
-nn <silent> cP        :let @" = system('xsel -ob')<CR>P
-nn <silent> c<Space>p :let @" = system('xsel -ob')<Bar>normal =p<CR>
-nn <silent> c<Space>P :let @" = system('xsel -ob')<Bar>normal =P<CR>
-nn <silent> sp        :let @" = system('xsel -op')<CR>p
-nn <silent> sP        :let @" = system('xsel -op')<CR>P
-nn <silent> s<Space>p :let @" = system('xsel -op')<Bar>normal =p<CR>
-nn <silent> s<Space>P :let @" = system('xsel -op')<Bar>normal =P<CR>
+nn <silent> sp        :let @" = system('xsel -ob')<CR>p
+nn <silent> sP        :let @" = system('xsel -ob')<CR>P
+nn <silent> s<Space>p :let @" = system('xsel -ob')<CR>=p
+nn <silent> s<Space>P :let @" = system('xsel -ob')<CR>=P
+xn <silent> <C-c> y:call system('xsel -ib', @")<CR>
+xn <silent> sp        :<C-u>let @" = system('xsel -ob')<CR>gvp
+xn <silent> sP        :<C-u>let @" = system('xsel -ob')<CR>gvP
+xn <silent> s<Space>p :<C-u>let @" = system('xsel -ob')<CR>gv=p
+xn <silent> s<Space>P :<C-u>let @" = system('xsel -ob')<CR>gv=P
 
 " netrw {{{1
 let g:netrw_keepdir = 0
