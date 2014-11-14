@@ -189,7 +189,7 @@ filetype *.html,*.htm links,mozilla,uzbl-browser %f %i &
 filetype *.o nm %f | less
 
 " Image
-filextype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
+filextype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm,*.tiff
         \ {View in sxiv}
         \ sxiv %f &,
         \ {View in gpicview}
