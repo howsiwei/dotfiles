@@ -1,4 +1,4 @@
-set wrap
-set linebreak
+setl linebreak
 nn <buffer> j gj
 nn <buffer> k gk
+
