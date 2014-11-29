@@ -8,26 +8,25 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'bling/vim-bufferline'
 NeoBundle 'ervandew/supertab'
+NeoBundle 'moll/vim-bbye'
 NeoBundle 'tpope/vim-commentary'
+NeoBundle 'tpope/vim-eunuch'
+NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-unimpaired'
-NeoBundle 'tpope/vim-eunuch'
 NeoBundle 'tpope/vim-vinegar'
-NeoBundle 'tpope/vim-repeat'
 NeoBundle 'travitch/hasksyn'
-NeoBundle 'bling/vim-bufferline'
-NeoBundle 'moll/vim-bbye'
 NeoBundle 'cmdalias.vim'
 NeoBundle 'Shougo/vimproc.vim', {
 	\ 'build': {
 	\   'unix':  'make -f make_unix.mak',
 	\ },
 	\ }
-NeoBundleLazy 'xolox/vim-shell', {
-	\ 'depends': 'xolox/vim-misc',
+NeoBundleLazy 'amdt/vim-niji', {
 	\ 'autoload': {
-	\   'commands': 'MakeWithShell',
+	\   'filetypes': ['scheme',],
 	\ },
 	\ }
 NeoBundleLazy 'majutsushi/tagbar', {
@@ -35,9 +34,19 @@ NeoBundleLazy 'majutsushi/tagbar', {
 	\   'commands': 'TagbarToggle',
 	\ },
 	\ }
+NeoBundleLazy 'mbbill/undotree', {
+	\ 'autoload': {
+	\   'commands': ['UndotreeToggle',],
+	\ },
+	\ }
 NeoBundleLazy 'scrooloose/syntastic', {
 	\ 'autoload': {
 	\   'filetypes': ['c','cpp','lua',],
+	\ },
+	\ }
+NeoBundleLazy 'tpope/vim-endwise', {
+	\ 'autoload': {
+	\   'filetypes': ['vim','lua',],
 	\ },
 	\ }
 NeoBundleLazy 'xolox/vim-notes', {
@@ -46,24 +55,15 @@ NeoBundleLazy 'xolox/vim-notes', {
 	\   'commands': ['Note','MostRecentNote',],
 	\ },
 	\ }
-NeoBundleLazy 'tpope/vim-endwise', {
+NeoBundleLazy 'xolox/vim-shell', {
+	\ 'depends': 'xolox/vim-misc',
 	\ 'autoload': {
-	\   'filetypes': ['vim','lua',],
+	\   'commands': 'MakeWithShell',
 	\ },
 	\ }
-NeoBundleLazy 'amdt/vim-niji', {
-	\ 'autoload': {
-	\   'filetypes': ['scheme',],
-	\ },
-	\ }
-NeoBundleLazy 'mbbill/undotree', {
-	\ 'autoload': {
-	\   'commands': ['UndotreeToggle',],
-	\ },
-	\ }
-NeoBundleLazy 'xolox/vim-misc'
 NeoBundleLazy 'rking/ag.vim'
 NeoBundleLazy 'tpope/vim-abolish'
+NeoBundleLazy 'xolox/vim-misc'
 NeoBundleLocal ~/.vim/bundle_local
 call neobundle#end()
 runtime! macros/matchit.vim
