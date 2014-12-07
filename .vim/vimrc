@@ -19,6 +19,7 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-unimpaired'
 NeoBundle 'tpope/vim-vinegar'
 NeoBundle 'travitch/hasksyn'
+NeoBundle 'justinmk/vim-sneak'
 NeoBundle 'cmdalias.vim'
 NeoBundle 'Shougo/vimproc.vim', {
 	\ 'build': {
@@ -99,6 +100,7 @@ set background=dark
 colorscheme solarized
 set statusline=%<%F\ %h%m%r%=%-12.(%l,%c%V%)\ %P
 set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+highlight IncSearch term=standout cterm=standout ctermfg=8 ctermbg=11 gui=reverse
 
 " map {{{1
 let mapleader = ' '
@@ -127,7 +129,14 @@ no! <C-l> <Right>
 ino <C-A> <C-o>^
 cno <C-A> <Home>
 ino <expr> <C-E> col('.')>strlen(getline('.'))?"\<Lt>C-E>":"\<Lt>End>"
-nn mm :!sdcv <cword><CR>
+" nn mm :!sdcv <cword><CR>
+nmap m <Plug>Sneak_s
+xmap m <Plug>Sneak_s
+omap m <Plug>Sneak_s
+nmap M <Plug>Sneak_S
+xmap M <Plug>Sneak_S
+omap M <Plug>Sneak_S
+let g:sneak#s_next = 1
 
 " autocmd {{{1
 augroup self
