@@ -10,6 +10,7 @@ NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'bling/vim-bufferline'
 NeoBundle 'ervandew/supertab'
+NeoBundle 'gregsexton/MatchTag'
 NeoBundle 'moll/vim-bbye'
 NeoBundle 'tpope/vim-commentary'
 NeoBundle 'tpope/vim-eunuch'
@@ -235,17 +236,15 @@ xn * :<C-u>call VSetSearch()<CR>//<CR>N
 xn # :<C-u>call VSetSearch()<CR>??<CR>N
 
 " yank {{{1
-nmap <silent> y ;set opfunc=Yank<CR>g@
+nn <silent> y :set opfunc=Yank<CR>g@
 nn yy yy']
 xn y ygv<Esc>
 nn Y y$$
 function! Yank(type, ...)
 	if a:type == 'line'
-		exe "normal! '[V']y"
-		exe "normal! ']"
+		exe "normal! '[V']y']"
 	else
-		exe "normal! `[v`]y"
-		exe "normal! `]"
+		exe "normal! `[v`]y`]"
 	endif
 endfunction
 
