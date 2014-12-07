@@ -5,14 +5,15 @@ if has('vim_starting')
 endif
 call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
-NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
+NeoBundle 'Shougo/unite.vim'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'bling/vim-bufferline'
 NeoBundle 'ervandew/supertab'
 NeoBundle 'gregsexton/MatchTag'
 NeoBundle 'moll/vim-bbye'
 NeoBundle 'tpope/vim-commentary'
+NeoBundle 'tpope/vim-endwise'
 NeoBundle 'tpope/vim-eunuch'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-surround'
@@ -44,11 +45,6 @@ NeoBundleLazy 'mbbill/undotree', {
 NeoBundleLazy 'scrooloose/syntastic', {
 	\ 'autoload': {
 	\   'filetypes': ['c','cpp','lua',],
-	\ },
-	\ }
-NeoBundleLazy 'tpope/vim-endwise', {
-	\ 'autoload': {
-	\   'filetypes': ['vim','lua',],
 	\ },
 	\ }
 NeoBundleLazy 'xolox/vim-notes', {
