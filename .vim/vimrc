@@ -100,7 +100,6 @@ highlight IncSearch term=standout cterm=standout ctermfg=8 ctermbg=11 gui=revers
 
 " map {{{1
 let mapleader = ' '
-ino ii <Esc>`^
 ino ij <Esc>`^
 nn ; :
 nn : ;
