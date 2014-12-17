@@ -17,7 +17,7 @@ alias oc='octave -q'
 alias ot='octave -q --traditional'
 alias sd='sdcv'
 alias speedtest='~/Downloads/linux/speedtest-cli/speedtest_cli.py'
-alias pi='ping google.com'
+alias pi='ping to'
 alias make5='make LDLIBS="-lcs50 -lm"'
 alias kc='eval `keychain --eval id_rsa`'
 
