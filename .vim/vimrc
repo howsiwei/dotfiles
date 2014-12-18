@@ -62,7 +62,6 @@ NeoBundleLazy 'xolox/vim-shell', {
 NeoBundleLazy 'rking/ag.vim'
 NeoBundleLazy 'tpope/vim-abolish'
 NeoBundleLazy 'xolox/vim-misc'
-NeoBundleLocal ~/.vim/bundle_local
 call neobundle#end()
 runtime! macros/matchit.vim
 
