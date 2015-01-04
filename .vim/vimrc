@@ -125,13 +125,6 @@ ino <C-A> <C-o>^
 cno <C-A> <Home>
 ino <expr> <C-E> col('.')>strlen(getline('.'))?"\<Lt>C-E>":"\<Lt>End>"
 " nn mm :!sdcv <cword><CR>
-nmap m <Plug>Sneak_s
-xmap m <Plug>Sneak_s
-omap m <Plug>Sneak_s
-nmap M <Plug>Sneak_S
-xmap M <Plug>Sneak_S
-omap M <Plug>Sneak_S
-let g:sneak#s_next = 1
 
 " autocmd {{{1
 augroup self
@@ -210,6 +203,15 @@ omap ic        <Plug>Commentary
 nmap <Space>cc <Plug>CommentaryLine
 nmap cic       <Plug>ChangeCommentary
 nmap <Space>cu <Plug>Commentary<Plug>Commentary
+
+" vim-sneak {{{1
+nmap m <Plug>Sneak_s
+xmap m <Plug>Sneak_s
+omap m <Plug>Sneak_s
+nmap M <Plug>Sneak_S
+xmap M <Plug>Sneak_S
+omap M <Plug>Sneak_S
+let g:sneak#s_next = 1
 
 " vim-surround {{{1
 let g:surround_no_mappings = 1
