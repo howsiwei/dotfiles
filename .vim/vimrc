@@ -215,17 +215,17 @@ let g:sneak#s_next = 1
 
 " vim-surround {{{1
 let g:surround_no_mappings = 1
-nmap ds <Plug>Dsurround
-nmap cs <Plug>Csurround
-nmap s  <Plug>Ysurround
-nmap S  <Plug>YSurround
-nmap ss <Plug>Yssurround
-nmap SS <Plug>YSsurround
-xmap s  <Plug>VSurround
-xmap S  <Plug>VgSurround
+nmap d<Leader>s <Plug>Dsurround
+nmap c<Leader>s <Plug>Csurround
+nmap <Leader>s  <Plug>Ysurround
+nmap <Leader>S  <Plug>YSurround
+nmap <Leader>ss <Plug>Yssurround
+nmap <Leader>SS <Plug>YSsurround
+xmap <Leader>s  <Plug>VSurround
+xmap <Leader>S  <Plug>VgSurround
 nn <silent> <Plug>DSurroundSpace f<Space>xF<Space>x
 	\:call repeat#set("\<Plug>DSurroundSpace")<CR>
-nmap ds<Space> <Plug>DSurroundSpace
+nmap d<Leader>s<Space> <Plug>DSurroundSpace
 
 " vim-unimpaired {{{1
 nmap <Leader>p =p
