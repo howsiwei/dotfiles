@@ -155,13 +155,13 @@ nnoremap <silent> ' :call Jump(nr2char(getchar()))<CR>
 nn <silent> <C-c> :silent w !xsel -ib<CR>
 nn <silent> sp        :let @" = system('xsel -ob')<CR>p
 nn <silent> sP        :let @" = system('xsel -ob')<CR>P
-nn <silent> s<Space>p :let @" = system('xsel -ob')<CR>=p
-nn <silent> s<Space>P :let @" = system('xsel -ob')<CR>=P
+nn <silent> s<Leader>p :let @" = system('xsel -ob')<CR>=p
+nn <silent> s<Leader>P :let @" = system('xsel -ob')<CR>=P
 xn <silent> <C-c> y:call system('xsel -ib', @")<CR>
 xn <silent> sp        :<C-u>let @" = system('xsel -ob')<CR>gvp
 xn <silent> sP        :<C-u>let @" = system('xsel -ob')<CR>gvP
-xn <silent> s<Space>p :<C-u>let @" = system('xsel -ob')<CR>gv=p
-xn <silent> s<Space>P :<C-u>let @" = system('xsel -ob')<CR>gv=P
+xn <silent> s<Leader>p :<C-u>let @" = system('xsel -ob')<CR>gv=p
+xn <silent> s<Leader>P :<C-u>let @" = system('xsel -ob')<CR>gv=P
 
 " netrw {{{1
 let g:netrw_keepdir = 0
@@ -197,12 +197,12 @@ nn <silent> <Leader>y :Unite history/yank<CR>
 nn <silent> <Leader>d :Bdelete<CR>
 
 " vim-commentary {{{1
-xmap <Space>c  <Plug>Commentary
-nmap <Space>c  <Plug>Commentary
+xmap <Leader>c  <Plug>Commentary
+nmap <Leader>c  <Plug>Commentary
 omap ic        <Plug>Commentary
-nmap <Space>cc <Plug>CommentaryLine
+nmap <Leader>cc <Plug>CommentaryLine
 nmap cic       <Plug>ChangeCommentary
-nmap <Space>cu <Plug>Commentary<Plug>Commentary
+nmap <Leader>cu <Plug>Commentary<Plug>Commentary
 
 " vim-sneak {{{1
 nmap m <Plug>Sneak_s
