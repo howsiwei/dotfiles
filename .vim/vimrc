@@ -199,9 +199,9 @@ nn <silent> <Leader>d :Bdelete<CR>
 " vim-commentary {{{1
 xmap <Leader>c  <Plug>Commentary
 nmap <Leader>c  <Plug>Commentary
-omap ic        <Plug>Commentary
+omap <Leader>c        <Plug>Commentary
 nmap <Leader>cc <Plug>CommentaryLine
-nmap cic       <Plug>ChangeCommentary
+nmap c<Leader>c       <Plug>ChangeCommentary
 nmap <Leader>cu <Plug>Commentary<Plug>Commentary
 
 " vim-sneak {{{1
