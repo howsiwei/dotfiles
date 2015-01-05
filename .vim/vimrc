@@ -205,12 +205,8 @@ nmap c<Leader>c       <Plug>ChangeCommentary
 nmap <Leader>cu <Plug>Commentary<Plug>Commentary
 
 " vim-sneak {{{1
-nmap m <Plug>Sneak_s
-xmap m <Plug>Sneak_s
-omap m <Plug>Sneak_s
-nmap M <Plug>Sneak_S
-xmap M <Plug>Sneak_S
-omap M <Plug>Sneak_S
+omap s <Plug>Sneak_s
+omap S <Plug>Sneak_S
 let g:sneak#s_next = 1
 
 " vim-surround {{{1
