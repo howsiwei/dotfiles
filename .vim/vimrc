@@ -41,7 +41,7 @@ NeoBundleLazy 'mbbill/undotree', {
 	\ }
 NeoBundleLazy 'scrooloose/syntastic', {
 	\ 'autoload': {
-	\   'filetypes': ['c','cpp','lua',],
+	\   'commands': ['SyntasticCheck'],
 	\ },
 	\ }
 NeoBundleLazy 'xolox/vim-notes', {
@@ -106,8 +106,9 @@ nn <C-k> <C-o>
 nn <silent> <Leader>q :q<CR>
 nn <silent> <Leader>x :x<CR>
 nn <silent> <Leader>e :up<CR>
+nn <silent> <Leader>w :up<Bar>:SyntasticCheck<CR>
 nn <silent> <Leader>v :e $MYVIMRC<CR>
-nn <silent> <Leader>s :sh<CR>
+" nn <silent> <Leader>s :sh<CR>
 nn <silent> <S-Tab> :bp<CR>
 nn <silent> <Tab> :bn<CR>
 nn <silent> <C-@> :noh<CR>
@@ -162,6 +163,9 @@ xn <silent> c<Leader>P :<C-u>let @" = system('xsel -ob')<CR>gv=P
 " netrw {{{1
 let g:netrw_keepdir = 0
 let g:netrw_localrmdir = 'rm -r'
+
+" syntastic {{{1
+let g:syntastic_mode_map = {"mode": "passive"}
 
 " tagbar {{{1
 nn <silent> <F5> :TagbarToggle<CR>
