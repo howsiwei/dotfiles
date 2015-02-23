@@ -67,4 +67,4 @@
 *faceName: DejaVuSansMono
 *faceSize: 13
 urxvt.scrollBar: false
-urxvt.font:     xft:DejavuSansMono:pixelsize=12
+urxvt.font:     xft:DejavuSansMono:pixelsize=14
