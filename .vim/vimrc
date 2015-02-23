@@ -8,6 +8,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'amdt/vim-niji'
 NeoBundle 'bling/vim-bufferline'
 NeoBundle 'ervandew/supertab'
 NeoBundle 'gregsexton/MatchTag'
@@ -26,11 +27,6 @@ NeoBundle 'cmdalias.vim'
 NeoBundle 'Shougo/vimproc.vim', {
 	\ 'build': {
 	\   'unix':  'make -f make_unix.mak',
-	\ },
-	\ }
-NeoBundleLazy 'amdt/vim-niji', {
-	\ 'autoload': {
-	\   'filetypes': ['scheme',],
 	\ },
 	\ }
 NeoBundleLazy 'majutsushi/tagbar', {
