@@ -30,6 +30,12 @@ NeoBundle 'Shougo/vimproc.vim', {
 	\   'unix':  'make -f make_unix.mak',
 	\ },
 	\ }
+NeoBundleLazy 'gregsexton/gitv', {
+	\ 'depends': 'tpope/vim-fugitive',
+	\ 'autoload': {
+	\   'commands': 'Gitv',
+	\ },
+	\ }
 NeoBundleLazy 'majutsushi/tagbar', {
 	\ 'autoload': {
 	\   'commands': 'TagbarToggle',
