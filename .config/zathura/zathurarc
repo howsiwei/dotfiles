@@ -38,6 +38,4 @@ map e scroll up
 map o scroll up
 map I navigate next
 map ( navigate previous
-unmap q
-map x quit
 
