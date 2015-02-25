@@ -115,7 +115,6 @@ nn <silent> <Leader>x :x<CR>
 nn <silent> <Leader>e :up<CR>
 nn <silent> <Leader>w :up<Bar>:SyntasticCheck<CR>
 nn <silent> <Leader>v :e $MYVIMRC<CR>
-" nn <silent> <Leader>s :sh<CR>
 nn <silent> <S-Tab> :bp<CR>
 nn <silent> <Tab> :bn<CR>
 nn <silent> <C-@> :noh<CR>
