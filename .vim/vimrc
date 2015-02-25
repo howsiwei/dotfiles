@@ -103,10 +103,8 @@ highlight IncSearch term=standout cterm=standout ctermfg=8 ctermbg=11 gui=revers
 
 " map {{{1
 let mapleader = ' '
-nn ; :
-nn : ;
-xn ; :
-xn : ;
+no ; :
+no : ;
 nn <C-j> <C-i>
 nn <C-k> <C-o>
 nn <silent> <Leader>q :q<CR>
