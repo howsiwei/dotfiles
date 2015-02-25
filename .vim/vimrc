@@ -103,7 +103,6 @@ highlight IncSearch term=standout cterm=standout ctermfg=8 ctermbg=11 gui=revers
 
 " map {{{1
 let mapleader = ' '
-ino ij <Esc>`^
 nn ; :
 nn : ;
 xn ; :
@@ -119,6 +118,8 @@ nn <silent> <S-Tab> :bp<CR>
 nn <silent> <Tab> :bn<CR>
 nn <silent> <C-@> :noh<CR>
 nn <silent> <C-l> :noh<CR><C-l>
+nn mm :!sdcv <cword><CR>
+ino ij <Esc>`^
 ino <C-f> <C-o>
 no! <C-j> <Down>
 no! <C-k> <Up>
@@ -126,7 +127,6 @@ no! <C-h> <Left>
 no! <C-l> <Right>
 no! <C-a> <Home>
 no! <C-e> <End>
-nn mm :!sdcv <cword><CR>
 
 " autocmd {{{1
 augroup self
