@@ -3,7 +3,7 @@ set adjust-open width
 set pages-per-row 1
 set scroll-full-overlap 0.05
 set selection-clipboard clipboard
-set font 15
+set font 11
 
 # color {{{1
 set default-bg                  "#050505"
