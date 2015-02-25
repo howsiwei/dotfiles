@@ -152,14 +152,14 @@ command vgrep vim "+grep %a"
 " program.
 
 " Pdf
-filetype *.pdf zathura --fork > /dev/null 2>&1 %f,apvlv %f,xpdf %f
+filetype *.pdf zathura --fork > ~/.log/zathura.log 2>&1 %f,apvlv %f,xpdf %f
 fileview *.pdf pdftotext -nopgbrk %c -
 
 " PostScript
 filextype *.ps,*.ps.gz gv %c %i &
 
 " Djvu
-filextype *.djvu zathura --fork > /dev/null 2>&1 %f,apvlv %f
+filextype *.djvu zathura --fork > ~/.log/zathura.log 2>&1 %f,apvlv %f
 
 " Audio
 filetype *.wav,*.mp3,*.flac,*.ogg,*.m4a
