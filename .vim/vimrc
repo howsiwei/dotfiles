@@ -126,7 +126,7 @@ no! <C-h> <Left>
 no! <C-l> <Right>
 ino <C-A> <C-o>^
 cno <C-A> <Home>
-ino <expr> <C-E> col('.')>strlen(getline('.'))?"\<Lt>C-E>":"\<Lt>End>"
+no! <C-e> <End>
 nn mm :!sdcv <cword><CR>
 
 " autocmd {{{1
