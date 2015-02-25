@@ -124,8 +124,7 @@ no! <C-j> <Down>
 no! <C-k> <Up>
 no! <C-h> <Left>
 no! <C-l> <Right>
-ino <C-A> <C-o>^
-cno <C-A> <Home>
+no! <C-a> <Home>
 no! <C-e> <End>
 nn mm :!sdcv <cword><CR>
 
