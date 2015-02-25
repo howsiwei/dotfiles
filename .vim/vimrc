@@ -91,6 +91,7 @@ set timeoutlen=500
 set updatetime=2000
 set wildmenu
 set showcmd
+set tildeop
 set gdefault
 set lazyredraw
 set foldmethod=marker
