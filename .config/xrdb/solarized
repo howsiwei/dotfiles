@@ -69,3 +69,6 @@
 urxvt.scrollBar: false
 urxvt.font:     xft:DejavuSansMono:pixelsize=14
 URxvt.letterSpace: -1
+URxvt.perl-ext-common: default,matcher
+URxvt.url-launcher: /usr/bin/chromium
+URxvt.matcher.button: 1
