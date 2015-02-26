@@ -68,3 +68,4 @@
 *faceSize: 13
 urxvt.scrollBar: false
 urxvt.font:     xft:DejavuSansMono:pixelsize=14
+URxvt.letterSpace: -1
