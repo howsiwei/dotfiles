@@ -51,12 +51,6 @@ NeoBundleLazy 'scrooloose/syntastic', {
 	\   'commands': ['SyntasticCheck'],
 	\ },
 	\ }
-NeoBundleLazy 'xolox/vim-notes', {
-	\ 'depends': 'xolox/vim-misc',
-	\ 'autoload': {
-	\   'commands': ['Note','MostRecentNote',],
-	\ },
-	\ }
 NeoBundleLazy 'xolox/vim-shell', {
 	\ 'depends': 'xolox/vim-misc',
 	\ 'autoload': {
