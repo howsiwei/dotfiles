@@ -152,13 +152,9 @@ nnoremap <silent> ' :call Jump(nr2char(getchar()))<CR>
 nn <silent> <C-c> :silent w !xsel -ib<CR>
 nn <silent> cp        :let @" = system('xsel -ob')<CR>p
 nn <silent> cP        :let @" = system('xsel -ob')<CR>P
-nn <silent> c<Leader>p :let @" = system('xsel -ob')<CR>=p
-nn <silent> c<Leader>P :let @" = system('xsel -ob')<CR>=P
+nn <silent> c<Leader>p :let @" = system('xsel -ob')<Bar>normal =p<CR>
+nn <silent> c<Leader>P :let @" = system('xsel -ob')<Bar>normal =P<CR>
 xn <silent> <C-c> y:call system('xsel -ib', @")<CR>
-xn <silent> cp        :<C-u>let @" = system('xsel -ob')<CR>gvp
-xn <silent> cP        :<C-u>let @" = system('xsel -ob')<CR>gvP
-xn <silent> c<Leader>p :<C-u>let @" = system('xsel -ob')<CR>gv=p
-xn <silent> c<Leader>P :<C-u>let @" = system('xsel -ob')<CR>gv=P
 
 " netrw {{{1
 let g:netrw_keepdir = 0
