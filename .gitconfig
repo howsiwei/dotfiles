@@ -4,6 +4,7 @@
 [core]
 	editor = vi
 [alias]
+	st = status
 	track = update-index --no-assume-unchanged
 	untrack = update-index --assume-unchanged
 	ls-untracked = !git ls-files -v | grep ^h | cut -c 3-
