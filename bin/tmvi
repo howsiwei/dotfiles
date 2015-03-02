@@ -1,4 +1,5 @@
-# vi: ft=sh
+#!/bin/sh
+
 fs=""
 for f in "$@"; do
 	fs="$fs \"$f\""
