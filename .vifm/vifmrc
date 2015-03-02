@@ -172,7 +172,7 @@ fileviewer *.mp3 mp3info
 " Video
 filextype *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.vob,*.flv
         \ {View using mpv}
-        \ mpv %f & > ~/.log/mpv.log 2>&1,
+        \ mpv %f > ~/.log/mpv.log 2>&1 &,
         \ {View using ffplay}
         \ ffplay -fs %c,
         \ {View using Dragon}
