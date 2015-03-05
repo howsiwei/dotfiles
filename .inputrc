@@ -10,6 +10,9 @@ set keymap vi-insert
 "\C-e": end-of-line
 "\C-j": history-search-forward
 "\C-k": history-search-backward
+"\C-w": unix-filename-rubout
+"\C-b": unix-word-rubout
+"\C-x": re-read-init-file
 "\e[D": backward-char
 "\e[C": forward-char
 "\eOD": backward-word

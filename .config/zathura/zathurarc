@@ -3,7 +3,7 @@ set adjust-open width
 set pages-per-row 1
 set scroll-full-overlap 0.05
 set selection-clipboard clipboard
-set font 15
+set font 11
 
 # color {{{1
 set default-bg                  "#050505"
@@ -11,7 +11,7 @@ set default-fg                  "#202020"
 set statusbar-bg                "#050505"
 set statusbar-fg                "#c0c0c0"
 set inputbar-bg                 "#050505"
-set inputbar-fg                 "#ffffff"
+set inputbar-fg                 "#f0f0f0"
 set notification-error-bg       "#AC4142"
 set notification-error-fg       "#050505"
 set notification-warning-bg     "#AC4142"
@@ -38,6 +38,4 @@ map e scroll up
 map o scroll up
 map I navigate next
 map ( navigate previous
-unmap q
-map x quit
 

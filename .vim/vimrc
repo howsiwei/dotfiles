@@ -8,6 +8,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'amdt/vim-niji'
 NeoBundle 'bling/vim-bufferline'
 NeoBundle 'ervandew/supertab'
 NeoBundle 'gregsexton/MatchTag'
@@ -16,6 +17,7 @@ NeoBundle 'moll/vim-bbye'
 NeoBundle 'tpope/vim-commentary'
 NeoBundle 'tpope/vim-endwise'
 NeoBundle 'tpope/vim-eunuch'
+NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-unimpaired'
@@ -28,9 +30,10 @@ NeoBundle 'Shougo/vimproc.vim', {
 	\   'unix':  'make -f make_unix.mak',
 	\ },
 	\ }
-NeoBundleLazy 'amdt/vim-niji', {
+NeoBundleLazy 'gregsexton/gitv', {
+	\ 'depends': 'tpope/vim-fugitive',
 	\ 'autoload': {
-	\   'filetypes': ['scheme',],
+	\   'commands': 'Gitv',
 	\ },
 	\ }
 NeoBundleLazy 'majutsushi/tagbar', {
@@ -46,12 +49,6 @@ NeoBundleLazy 'mbbill/undotree', {
 NeoBundleLazy 'scrooloose/syntastic', {
 	\ 'autoload': {
 	\   'commands': ['SyntasticCheck'],
-	\ },
-	\ }
-NeoBundleLazy 'xolox/vim-notes', {
-	\ 'depends': 'xolox/vim-misc',
-	\ 'autoload': {
-	\   'commands': ['Note','MostRecentNote',],
 	\ },
 	\ }
 NeoBundleLazy 'xolox/vim-shell', {
@@ -73,22 +70,24 @@ set undodir=~/.vim/.undo
 set viminfo+=n~/.vim/.viminfo
 set backspace=2
 set shiftwidth=2 tabstop=2 softtabstop=2
-set mouse=nv
-set t_vb=
 set history=1000
+set mouse=nv
 set scrolloff=2
-set number
+set t_vb=
 set autoindent
 set hidden
+set number
 set incsearch
+set ignorecase
 set smartcase
 set laststatus=2
 set timeoutlen=500
 set updatetime=2000
-set wildmenu
-set showcmd
 set gdefault
 set lazyredraw
+set showcmd
+set tildeop
+set wildmenu
 set foldmethod=marker
 set virtualedit=onemore
 syntax enable
@@ -100,11 +99,9 @@ highlight IncSearch term=standout cterm=standout ctermfg=8 ctermbg=11 gui=revers
 
 " map {{{1
 let mapleader = ' '
-ino ij <Esc>`^
-nn ; :
-nn : ;
-xn ; :
-xn : ;
+no ; :
+no : ;
+no @; @:
 nn <C-j> <C-i>
 nn <C-k> <C-o>
 nn <silent> <Leader>q :q<CR>
@@ -112,20 +109,19 @@ nn <silent> <Leader>x :x<CR>
 nn <silent> <Leader>e :up<CR>
 nn <silent> <Leader>w :up<Bar>:SyntasticCheck<CR>
 nn <silent> <Leader>v :e $MYVIMRC<CR>
-" nn <silent> <Leader>s :sh<CR>
 nn <silent> <S-Tab> :bp<CR>
 nn <silent> <Tab> :bn<CR>
 nn <silent> <C-@> :noh<CR>
 nn <silent> <C-l> :noh<CR><C-l>
+nn mm :!sdcv <cword><CR>
+ino ij <Esc>`^
 ino <C-f> <C-o>
 no! <C-j> <Down>
 no! <C-k> <Up>
 no! <C-h> <Left>
 no! <C-l> <Right>
-ino <C-A> <C-o>^
-cno <C-A> <Home>
-ino <expr> <C-E> col('.')>strlen(getline('.'))?"\<Lt>C-E>":"\<Lt>End>"
-nn mm :!sdcv <cword><CR>
+no! <C-a> <Home>
+no! <C-e> <End>
 
 " autocmd {{{1
 augroup self
@@ -156,13 +152,9 @@ nnoremap <silent> ' :call Jump(nr2char(getchar()))<CR>
 nn <silent> <C-c> :silent w !xsel -ib<CR>
 nn <silent> cp        :let @" = system('xsel -ob')<CR>p
 nn <silent> cP        :let @" = system('xsel -ob')<CR>P
-nn <silent> c<Leader>p :let @" = system('xsel -ob')<CR>=p
-nn <silent> c<Leader>P :let @" = system('xsel -ob')<CR>=P
+nn <silent> c<Leader>p :let @" = system('xsel -ob')<Bar>normal =p<CR>
+nn <silent> c<Leader>P :let @" = system('xsel -ob')<Bar>normal =P<CR>
 xn <silent> <C-c> y:call system('xsel -ib', @")<CR>
-xn <silent> cp        :<C-u>let @" = system('xsel -ob')<CR>gvp
-xn <silent> cP        :<C-u>let @" = system('xsel -ob')<CR>gvP
-xn <silent> c<Leader>p :<C-u>let @" = system('xsel -ob')<CR>gv=p
-xn <silent> c<Leader>P :<C-u>let @" = system('xsel -ob')<CR>gv=P
 
 " netrw {{{1
 let g:netrw_keepdir = 0
