@@ -66,9 +66,11 @@
 
 *faceName: DejaVuSansMono
 *faceSize: 13
-urxvt.scrollBar: false
-urxvt.font:     xft:DejavuSansMono:pixelsize=14
+
+URxvt.scrollBar: false
+URxvt.font:     xft:DejavuSansMono:pixelsize=14
 URxvt.letterSpace: -2
 URxvt.perl-ext-common: default,matcher
 URxvt.url-launcher: /usr/bin/chromium
 URxvt.matcher.button: 1
+
