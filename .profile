@@ -16,9 +16,4 @@ fi
 export EDITOR=vi
 export VISUAL=vi
 export XDG_CONFIG_HOME="$HOME/.config"
-export CPPFLAGS='-O2'
-export CWFLAGS='-Wall -Wextra -Wno-sign-compare -Wno-parentheses'
-export CFLAGS="-std=c99 $CWFLAGS"
-export CXXFLAGS="-std=c++11 $CWFLAGS"
-export CWNOUNUSEDFLAGS='-Wno-unused-variable -Wno-unused-but-set-variable -Wno-unused-parameter'
 

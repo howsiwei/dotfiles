@@ -27,4 +27,9 @@ timevi() { rm -f "$@" && vi --startuptime "$_"; }
 HISTSIZE=10000
 HISTFILESIZE=20000
 HISTCONTROL=ignoreboth
+CPPFLAGS='-O2'
+CWFLAGS='-Wall -Wextra -Wno-sign-compare -Wno-parentheses'
+CFLAGS="-std=c99 $CWFLAGS"
+CXXFLAGS="-std=c++11 $CWFLAGS"
+CWNOUNUSEDFLAGS='-Wno-unused-variable -Wno-unused-but-set-variable -Wno-unused-parameter'
 
