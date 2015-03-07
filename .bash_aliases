@@ -24,7 +24,7 @@ alias kc='eval `keychain --eval id_rsa`'
 md() { mkdir -p "$@" && cd "$_"; }
 timevi() { rm -f "$@" && vi --startuptime "$_"; }
 
-HISTSIZE=1000
-HISTFILESIZE=9999
+HISTSIZE=10000
+HISTFILESIZE=20000
 HISTCONTROL=ignoreboth
 
