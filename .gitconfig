@@ -4,6 +4,7 @@
 [core]
 	editor = vi
 [alias]
+	lg = log --oneline
 	st = status
 	track = update-index --no-assume-unchanged
 	untrack = update-index --assume-unchanged
