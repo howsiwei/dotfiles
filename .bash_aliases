@@ -1,4 +1,5 @@
-# vim: ft=sh
+#!/bin/bash
+
 alias als='vi ~/.bash_aliases && . ~/.bash_aliases'
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -27,6 +28,9 @@ timevi() { rm -f "$@" && vi --startuptime "$_"; }
 HISTCONTROL=ignorespace:erasedups
 HISTSIZE=10000
 HISTFILESIZE=20000
+# PS1='[\u@\h \W]\$ '
+PS1=' \W $ '
+
 CPPFLAGS='-O2'
 CWFLAGS='-Wall -Wextra -Wno-sign-compare -Wno-parentheses'
 CFLAGS="-std=c99 $CWFLAGS"
