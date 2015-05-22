@@ -1,12 +1,12 @@
 /*
-!.gitignore
 !.config/
 !.vifm/
 !.vim/
 !bin/
-!.tmux.conf
 !.bash_aliases
 !.gitconfig
+!.gitignore
 !.guile
 !.inputrc
 !.profile
+!.tmux.conf
