@@ -1,0 +1,22 @@
+#!/usr/bin/env tclsh
+
+namespace path ::tcl::mathop
+
+if {$tcl_interactive} {
+  package require tclreadline
+	namespace eval tclreadline {
+		proc prompt1 {} {
+			global env
+			if {[catch {set pwd [pwd]} tmp]} {
+				set pwd "unable to get pwd"
+			}
+			if [info exists env(HOME)] {
+				regsub $env(HOME) $pwd "~" pwd
+			}
+			return "$pwd% "
+		}
+	}
+	set tcl_prompt2 " "
+  ::tclreadline::Loop
+}
+

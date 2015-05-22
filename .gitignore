@@ -9,4 +9,5 @@
 !.guile
 !.inputrc
 !.profile
+!.tclshrc
 !.tmux.conf
