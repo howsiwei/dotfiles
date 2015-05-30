@@ -8,6 +8,8 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
+polipo &
+
 prepend_path() {
 	if test -d "$1"; then
 		case ":$PATH:" in
@@ -25,4 +27,5 @@ prepend_path "$HOME/bin"
 export EDITOR=vim
 export VISUAL=vim
 export XDG_CONFIG_HOME="$HOME/.config"
+export http_proxy=http://localhost:8123/
 
