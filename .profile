@@ -8,12 +8,21 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-	PATH="$HOME/bin:$PATH"
-fi
+prepend_path() {
+	if test -d "$1"; then
+		case ":$PATH:" in
+			*":$1:"*) :;;
+			*) PATH="$1:$PATH"
+		esac
+	fi
+}
 
-export EDITOR=vi
-export VISUAL=vi
+prepend_path "/usr/local/texlive/2014/bin/i386-linux" 
+prepend_path "$HOME/.gem/ruby/2.2.0/bin" 
+prepend_path "$HOME/.local/bin" 
+prepend_path "$HOME/bin" 
+
+export EDITOR=vim
+export VISUAL=vim
 export XDG_CONFIG_HOME="$HOME/.config"
 
