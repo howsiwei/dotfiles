@@ -8,6 +8,7 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
+light -S 4
 polipo &
 
 prepend_path() {
