@@ -1,9 +1,12 @@
 /*
+.*.swp
 !.config/
 !.vifm/
 !.vim/
 !bin/
 !.bash_aliases
+!.bash_profile
+!.bashrc
 !.gitconfig
 !.gitignore
 !.guile
