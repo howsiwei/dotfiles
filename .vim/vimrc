@@ -10,10 +10,12 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'amdt/vim-niji'
 NeoBundle 'bling/vim-bufferline'
+NeoBundleLazy 'dag/vim2hs'
 NeoBundle 'ervandew/supertab'
 NeoBundle 'gregsexton/MatchTag'
 NeoBundle 'justinmk/vim-sneak'
 NeoBundle 'moll/vim-bbye'
+NeoBundle 'cespare/vim-toml'
 NeoBundle 'tpope/vim-commentary'
 NeoBundle 'tpope/vim-endwise'
 NeoBundle 'tpope/vim-eunuch'
@@ -77,6 +79,7 @@ set t_vb=
 set autoindent
 set hidden
 set number
+set relativenumber
 set incsearch
 set ignorecase
 set smartcase
@@ -113,14 +116,17 @@ nn <silent> <S-Tab> :bp<CR>
 nn <silent> <Tab> :bn<CR>
 nn <silent> <C-@> :noh<CR>
 nn <silent> <C-l> :noh<CR><C-l>
+nn <Leader>m :make<CR><CR><CR>
 nn mm :!sdcv <cword><CR>
 ino ij <Esc>`^
-ino <C-f> <C-o>
-no! <C-j> <Down>
-no! <C-k> <Up>
+ino <C-f> <Esc>`^
+ino <C-j> <C-o>gj
+ino <C-k> <C-o>gk
+cno <C-j> <Down>
+cno <C-k> <Up>
 no! <C-h> <Left>
 no! <C-l> <Right>
-no! <C-a> <Home>
+no! <C-a> <C-o>_
 no! <C-e> <End>
 
 " autocmd {{{1
@@ -184,7 +190,7 @@ if executable('ag')
 	let g:unite_source_grep_default_opts='--hidden --nocolor --nogroup -S'
 	let g:unite_source_grep_recursive_opt=''
 endif
-nn <silent> <Leader>f :Unite -auto-resize -start-insert file_mru file_rec/async<CR>
+nn <silent> <Leader>f :Unite -auto-resize -start-insert file_rec/async<CR>
 nn <silent> <Leader>u :Unite -auto-resize -start-insert file_mru<CR>
 nn <silent> <Leader>g :Unite -auto-resize -no-quit -no-empty -keep-focus grep:.<CR>
 nn <silent> <Leader>y :Unite history/yank<CR>
@@ -201,8 +207,8 @@ nmap c<Leader>c       <Plug>ChangeCommentary
 nmap <Leader>cu <Plug>Commentary<Plug>Commentary
 
 " vim-sneak {{{1
-omap s <Plug>Sneak_s
-omap S <Plug>Sneak_S
+map s <Plug>Sneak_s
+map S <Plug>Sneak_S
 let g:sneak#s_next = 1
 
 " vim-surround {{{1
