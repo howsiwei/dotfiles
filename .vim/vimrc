@@ -64,6 +64,9 @@ NeoBundleLazy 'tpope/vim-abolish'
 NeoBundleLazy 'xolox/vim-misc'
 call neobundle#end()
 runtime! macros/matchit.vim
+set rtp+=$HOME/dotvim/bundle/enabler_vim
+let g:enabler#dirs=['/home/hsw/dotvim/bundle']
+runtime! plugin/enabler.vim
 
 " set {{{1
 filetype plugin indent on
