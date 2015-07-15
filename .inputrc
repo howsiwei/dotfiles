@@ -10,20 +10,20 @@ set keymap vi-insert
 "\C-e": end-of-line
 "\C-j": history-search-forward
 "\C-k": history-search-backward
-"\C-w": unix-filename-rubout
-"\C-b": unix-word-rubout
-"\C-x": re-read-init-file
-"\e[D": backward-char
-"\e[C": forward-char
-"\eOD": backward-word
-"\eOC": forward-word
-"\e[1;5D": backward-word
-"\e[1;5C": forward-word
+"\C-b": unix-filename-rubout
+"\C-x\C-l": redraw-current-line
+"\C-x\C-r": re-read-init-file
+# "\e[D": backward-char
+# "\e[C": forward-char
+# "\eOD": backward-word
+# "\eOC": forward-word
+# "\e[1;5D": backward-word
+# "\e[1;5C": forward-word
 "\C-h": backward-kill-word
 "\C-t": kill-line
-"\e[B": history-search-forward
-"\e[A": history-search-backward
+# "\e[B": history-search-forward
+# "\e[A": history-search-backward
 "\C-l": clear-screen
-"\e ": clear-screen
-"\e-": "-1\C-m"
+# "\e ": clear-screen
+# "\e-": "-1\C-m"
 

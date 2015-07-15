@@ -8,7 +8,7 @@ if !filereadable('Makefile') && !filereadable('makefile')
 	endif
 endif
 
-let g:syntastic_c_compiler_options = $CFLAGS.' '.$CWNOUNUSEDFLAGS
+let g:syntastic_c_compiler_options = $CFLAGS.' -Wno-unused-variable -Wno-unused-but-set-variable -Wno-unused-parameter'
 let b:testfile = expand('%:t:r:gs?\d*$??')
 let b:testfile_in  = b:testfile.'.in'
 let b:testfile_out = b:testfile.'.out'

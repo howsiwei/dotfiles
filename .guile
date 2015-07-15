@@ -1,4 +1,5 @@
 (use-modules (ice-9 readline))
 (activate-readline)
+(readline-set! history-length 9999)
 (use-srfis (list 1))
 ; (load "/home/siwei/Downloads/cs/scheme/math.scm")

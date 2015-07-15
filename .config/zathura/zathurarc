@@ -2,38 +2,35 @@
 set adjust-open width
 set pages-per-row 1
 set scroll-full-overlap 0.05
-set selection-clipboard clipboard
-set font 11
+set font 10
 
 # color {{{1
-set default-bg                  "#050505"
-set default-fg                  "#202020"
-set statusbar-bg                "#050505"
-set statusbar-fg                "#c0c0c0"
-set inputbar-bg                 "#050505"
-set inputbar-fg                 "#f0f0f0"
+set default-bg                  "#000"
+set default-fg                  "#222"
+set statusbar-bg                "#000"
+set statusbar-fg                "#aaa"
+set inputbar-bg                 "#000"
+set inputbar-fg                 "#eee"
 set notification-error-bg       "#AC4142"
-set notification-error-fg       "#050505"
+set notification-error-fg       "#000"
 set notification-warning-bg     "#AC4142"
-set notification-warning-fg     "#050505"
+set notification-warning-fg     "#000"
 # set highlight-color             "#F4BF75"
 # set highlight-active-color      "#6A9FB5"
-# set completion-highlight-fg     "#050505"
+# set completion-highlight-fg     "#000"
 # set completion-highlight-bg     "#233436"
-set completion-bg               "#050505"
-set completion-fg               "#c0c0c0"
+set completion-bg               "#000"
+set completion-fg               "#aaa"
 set notification-bg             "#90A959"
-set notification-fg             "#050505"
-set recolor-lightcolor          "#050505"
-set recolor-darkcolor           "#c0c0c0"
+set notification-fg             "#000"
+set recolor-lightcolor          "#000"
+set recolor-darkcolor           "#aaa"
 set recolor                     "true"
 set recolor-keephue             "true"
 
 # map {{{1
 map i scroll down
-map 9 scroll up
 map r scroll down
-map 4 scroll up
 map e scroll up
 map o scroll up
 map I navigate next

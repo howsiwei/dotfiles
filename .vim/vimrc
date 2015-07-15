@@ -1,81 +1,57 @@
 " plugin {{{1
 if has('vim_starting')
-	set nocompatible               " Be iMproved
-	set runtimepath+=~/.vim/bundle/neobundle.vim/
+	runtime! macros/matchit.vim
+	set rtp+=$HOME/dotvim/bundle/enabler_vim
+	let g:enabler#dirs=['/home/hsw/dotvim/bundle']
+	runtime! plugin/enabler.vim
+else
+	Enableupdate
 endif
-call neobundle#begin(expand('~/.vim/bundle/'))
-NeoBundleFetch 'Shougo/neobundle.vim'
-NeoBundle 'Shougo/neomru.vim'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'altercation/vim-colors-solarized'
-NeoBundle 'amdt/vim-niji'
-NeoBundle 'bling/vim-bufferline'
-NeoBundleLazy 'dag/vim2hs'
-NeoBundle 'ervandew/supertab'
-NeoBundle 'gregsexton/MatchTag'
-NeoBundle 'justinmk/vim-sneak'
-NeoBundle 'moll/vim-bbye'
-NeoBundle 'cespare/vim-toml'
-NeoBundle 'tpope/vim-commentary'
-NeoBundle 'tpope/vim-endwise'
-NeoBundle 'tpope/vim-eunuch'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'tpope/vim-repeat'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'tpope/vim-unimpaired'
-NeoBundle 'tpope/vim-vinegar'
-NeoBundle 'travitch/hasksyn'
-NeoBundle 'vifm/vifm.vim'
-NeoBundle 'cmdalias.vim'
-NeoBundle 'Shougo/vimproc.vim', {
-	\ 'build': {
-	\   'unix':  'make -f make_unix.mak',
-	\ },
-	\ }
-NeoBundleLazy 'gregsexton/gitv', {
-	\ 'depends': 'tpope/vim-fugitive',
-	\ 'autoload': {
-	\   'commands': 'Gitv',
-	\ },
-	\ }
-NeoBundleLazy 'majutsushi/tagbar', {
-	\ 'autoload': {
-	\   'commands': 'TagbarToggle',
-	\ },
-	\ }
-NeoBundleLazy 'mbbill/undotree', {
-	\ 'autoload': {
-	\   'commands': ['UndotreeToggle',],
-	\ },
-	\ }
-NeoBundleLazy 'scrooloose/syntastic', {
-	\ 'autoload': {
-	\   'commands': ['SyntasticCheck'],
-	\ },
-	\ }
-NeoBundleLazy 'xolox/vim-shell', {
-	\ 'depends': 'xolox/vim-misc',
-	\ 'autoload': {
-	\   'commands': 'MakeWithShell',
-	\ },
-	\ }
-NeoBundleLazy 'rking/ag.vim'
-NeoBundleLazy 'tpope/vim-abolish'
-NeoBundleLazy 'xolox/vim-misc'
-call neobundle#end()
-runtime! macros/matchit.vim
-set rtp+=$HOME/dotvim/bundle/enabler_vim
-let g:enabler#dirs=['/home/hsw/dotvim/bundle']
-runtime! plugin/enabler.vim
+Enable! cmdalias.vim
+Enable hasksyn
+Enable supertab
+Enable vifm.vim
+" Enable vim-bracketed-paste
+Enable vim-colors-solarized
+Enable vim-bufferline
+Enable vim-commentary
+Enable vim-eunuch
+Enable vim-repeat
+Enable vim-surround
+Enable vim-sneak
+Enable vim-startify
+Enablemap vim-unimpaired nnoremap =P
+Enablemap vim-unimpaired nnoremap =p
+Enablemap vim-unimpaired nnoremap cod
+Enablemap vim-unimpaired nnoremap coh
+Enablemap vim-unimpaired nnoremap coi
+Enablemap vim-unimpaired nnoremap col
+Enablefiletype toml vim-toml
+Enablecommand gitv Gitv
+call enabler#Dependency('gitv', ['vim-fugitive'])
+Enablecommand ag.vim Ag
+Enablecommand syntastic SyntasticCheck
+Enablecommand tagbar TagbarToggle
+Enablecommand undotree UndotreeToggle
+Enablecommand vim-bbye Bdelete
+Enablecommand vim-shell MakeWithShell
+call enabler#Dependency('vim-shell', ['vim-misc'])
+Enable ctrlp.vim
+Enable ctrlp-py-matcher
+Enable vim-vinegar
+" Enablemap vim-vinegar nnoremap -
+" Enablefiletype netrw vim-vinegar
+call enabler#Onload('vim-fugitive', 'let buf = bufnr("%") | bufdo doautocmd BufReadPost fugitive | exec "b".buf')
 
 " set {{{1
 filetype plugin indent on
+set nocompatible
 set undofile
 set undodir=~/.vim/.undo
 set viminfo+=n~/.vim/.viminfo
 set backspace=2
 set shiftwidth=2 tabstop=2 softtabstop=2
-set history=1000
+set history=9999
 set mouse=nv
 set scrolloff=2
 set t_vb=
@@ -88,7 +64,8 @@ set ignorecase
 set smartcase
 set laststatus=2
 set timeoutlen=500
-set updatetime=2000
+set updatetime=4000
+set display=lastline
 set gdefault
 set lazyredraw
 set showcmd
@@ -96,6 +73,7 @@ set tildeop
 set wildmenu
 set foldmethod=marker
 set virtualedit=onemore
+set wildignore+=*/Trash/*,*/tmp/*,*/.git/*,*/.hg/*,*.o,*.jpg,*.mp4,*.ogg,*.pdf,*.png,*.swo,*.swp
 syntax enable
 set background=dark
 colorscheme solarized
@@ -108,15 +86,15 @@ let mapleader = ' '
 no ; :
 no : ;
 no @; @:
-nn <C-j> <C-i>
-nn <C-k> <C-o>
+nn <C-j> <C-e>
+nn <C-k> <C-y>
 nn <silent> <Leader>q :q<CR>
 nn <silent> <Leader>x :x<CR>
 nn <silent> <Leader>e :up<CR>
 nn <silent> <Leader>w :up<Bar>:SyntasticCheck<CR>
 nn <silent> <Leader>v :e $MYVIMRC<CR>
-nn <silent> <S-Tab> :bp<CR>
-nn <silent> <Tab> :bn<CR>
+nn <silent> <C-p> :bp<CR>
+nn <silent> <C-n> :bn<CR>
 nn <silent> <C-@> :noh<CR>
 nn <silent> <C-l> :noh<CR><C-l>
 nn <Leader>m :make<CR><CR><CR>
@@ -129,7 +107,7 @@ cno <C-j> <Down>
 cno <C-k> <Up>
 no! <C-h> <Left>
 no! <C-l> <Right>
-no! <C-a> <C-o>_
+no! <C-a> <Home>
 no! <C-e> <End>
 
 " autocmd {{{1
@@ -144,6 +122,10 @@ augroup self
 	au BufNewFile *.cpp r ~/.vim/template/template.cpp|1d|normal ]]
 augroup END
 
+"" ag.vim {{{1
+let g:ag_prg="ag -U --hidden --vimgrep"
+let g:ag_highlight=1
+
 " bookmark {{{1
 function! Jump(char) abort
 	let [bufnr, line, column, rest] = getpos("'".a:char)
@@ -157,13 +139,42 @@ function! Jump(char) abort
 endfunction
 nnoremap <silent> ' :call Jump(nr2char(getchar()))<CR>
 
+" " bufdo {{{1
+" function! BufDo(command)
+" 	let currBuff=bufnr("%")
+" 	execute 'bufdo '.a:command
+" 	execute 'buffer '.currBuff
+" endfunction
+" com! -nargs=+ -complete=command Bufdo call BufDo(<q-args>)
+
 " clip {{{1
-nn <silent> <C-c> :silent w !xsel -ib<CR>
-nn <silent> cp        :let @" = system('xsel -ob')<CR>p
-nn <silent> cP        :let @" = system('xsel -ob')<CR>P
-nn <silent> c<Leader>p :let @" = system('xsel -ob')<Bar>normal =p<CR>
-nn <silent> c<Leader>P :let @" = system('xsel -ob')<Bar>normal =P<CR>
-xn <silent> <C-c> y:call system('xsel -ib', @")<CR>
+nn <silent> <C-c> :silent w !xsel -i<CR>
+nn <silent> cp        :let @" = system('xsel -o')<CR>p
+nn <silent> cP        :let @" = system('xsel -o')<CR>P
+nn <silent> c<Leader>p :let @" = system('xsel -o')<Bar>normal =p<CR>
+nn <silent> c<Leader>P :let @" = system('xsel -o')<Bar>normal =P<CR>
+xn <silent> <C-c> y:call system('xsel -i', @")<CR>
+
+" ctrlp {{{1
+let g:ctrlp_map = '<Leader>o'
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_open_new_file = 'r'
+let g:ctrlp_default_input = 0
+let g:ctrlp_reuse_window = 'netrw\|help\|quickfix\|startify'
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_user_command = 'cd %s && ag -U --hidden -g ""'
+
+" join {{{1
+nn J :set operatorfunc=Joinoperator<CR>g@
+nn gJ :set operatorfunc=GJoinoperator<CR>g@
+nn JJ Jj
+func! Joinoperator(submode)
+	'[,']join
+endfunc
+func! GJoinoperator(submode)
+	'[,']join!
+endfunc
 
 " netrw {{{1
 let g:netrw_keepdir = 0
@@ -177,26 +188,6 @@ nn <silent> <F5> :TagbarToggle<CR>
 
 " undotree {{{1
 nn <silent> <F6> :UndotreeToggle<CR>
-
-" unite.vim {{{1
-call unite#custom#source('file,file/new,buffer,file_rec,file_rec/async,file_mru',
-	\ 'matchers', 'matcher_fuzzy')
-call unite#custom#profile('default', 'context', {
-	\ 'winheight': 12,
-	\ 'direction': 'botright',
-	\ })
-call unite#filters#sorter_default#use(['sorter_rank'])
-" call unite#custom#source('file_rec/async','sorters','sorter_rank', )
-let g:unite_source_history_yank_enable=1
-if executable('ag')
-	let g:unite_source_grep_command='ag'
-	let g:unite_source_grep_default_opts='--hidden --nocolor --nogroup -S'
-	let g:unite_source_grep_recursive_opt=''
-endif
-nn <silent> <Leader>f :Unite -auto-resize -start-insert file_rec/async<CR>
-nn <silent> <Leader>u :Unite -auto-resize -start-insert file_mru<CR>
-nn <silent> <Leader>g :Unite -auto-resize -no-quit -no-empty -keep-focus grep:.<CR>
-nn <silent> <Leader>y :Unite history/yank<CR>
 
 " vim-bbye {{{1
 nn <silent> <Leader>d :Bdelete<CR>
@@ -228,9 +219,9 @@ nn <silent> <Plug>DSurroundSpace f<Space>xF<Space>x
 	\:call repeat#set("\<Plug>DSurroundSpace")<CR>
 nmap d<Leader>s<Space> <Plug>DSurroundSpace
 
-" vim-unimpaired {{{1
-nmap <Leader>p =p
-nmap <Leader>P =P
+" " vim-unimpaired {{{1
+" nmap <Leader>p =p
+" nmap <Leader>P =P
 
 " visualstar {{{1
 function! VSetSearch()

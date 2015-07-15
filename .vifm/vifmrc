@@ -8,7 +8,7 @@
 " If you would like to use another vi clone such Elvis or Vile
 " you will need to change this setting.
 
-set vicmd=tmvi
+set vicmd=te
 " set vicmd=elvis\ -G\ termcap
 " set vicmd=vile
 
@@ -101,6 +101,8 @@ set slowfs=curlftpfs
 
 set statusline="  %t%= %A %10u:%-7g %15s %20d  "
 
+set dotdirs=rootparent
+
 " :mark mark /full/directory/path [filename]
 
 mark b ~/bin/
@@ -152,34 +154,36 @@ command vgrep vim "+grep %a"
 " program.
 
 " Pdf
-filetype *.pdf zathura --fork > ~/.log/zathura.log 2>&1 %f,apvlv %f,xpdf %f
+filetype *.pdf zathura --fork 2> ~/.log/zathura.log %f,apvlv %f,xpdf %f
 fileview *.pdf pdftotext -nopgbrk %c -
 
-" PostScript
-filextype *.ps,*.ps.gz gv %c %i &
+" " PostScript
+" filextype *.ps,*.ps.gz gv %c %i &
 
-" Djvu
-filextype *.djvu zathura --fork > ~/.log/zathura.log 2>&1 %f,apvlv %f
+" Djvu,PostScript
+filextype *.cbt,*.djvu,*.ps zathura --fork > ~/.log/zathura.log 2>&1 %f,apvlv %f
 
 " Audio
+filetype *.ogg ogg123 -q %f &
+filetype *.mp3 mpg123 -q %f &
 filetype *.wav,*.mp3,*.flac,*.ogg,*.m4a
        \ {Play using ffplay}
-       \ ffplay %c,
+       \ ffplay -nodisp -loglevel quiet %c &,
        \ {Play using MPlayer}
        \ mplayer %f,
 fileviewer *.mp3 mp3info
 
 " Video
-filextype *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.vob,*.flv
+filextype *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.vob,*.flv,*.webm
         \ {View using mpv}
-        \ mpv %f > ~/.log/mpv.log 2>&1 &,
+        \ mpv --keep-open --really-quiet %f &,
         \ {View using ffplay}
         \ ffplay -fs %c,
         \ {View using Dragon}
         \ dragon %f,
         \ {View using mplayer}
         \ mplayer %f,
-fileviewer *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.vob
+fileviewer *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.vob,*.flv,*.webm
          \ ffprobe -pretty %c 2>&1
 
 " Web
@@ -196,26 +200,27 @@ filextype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm,*.tiff
         \ gpicview %c,
 fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm convert -identify %f -verbose /dev/null
 
+filetype *.svg inkview %f &
+
 " MD5
 filetype *.md5
        \ {Check MD5 hash sum}
        \ md5sum -c %f,
 
 " FuseZipMount
-filetype *.zip,*.jar,*.war,*.ear
+filetype *.zip,*.jar,*.war,*.ear,*.xpi
        \ {Mount with fuse-zip}
        \ FUSE_MOUNT|fuse-zip %SOURCE_FILE %DESTINATION_DIR,
        \ {View contents}
        \ zip -sf %c | less,
        \ tar -xf %c,
-fileviewer *.zip,*.jar,*.war,*.ear zip -sf %c
+fileviewer *.zip,*.jar,*.war,*.ear,*.xpi zip -sf %c
 
 " ArchiveMount
 filetype *.tar.bz2,*.tbz2,*.tgz,*.tar.gz
        \ {Mount with archivemount}
        \ FUSE_MOUNT|archivemount %SOURCE_FILE %DESTINATION_DIR,
-fileviewer *.tgz,*.tar.gz tar -tzf %c
-fileviewer *.tar.bz2,*.tbz2 tar -tjf %c
+fileviewer *.tar,*.tar.gz,*.tgz,*.tar.bz2,*.tbz2,*.cbt tar -tf %c | sort
 
 " Rar2FsMount
 filetype *.rar
@@ -243,7 +248,8 @@ filetype *.7z
        \ FUSE_MOUNT|fuse-7z %SOURCE_FILE %DESTINATION_DIR,
 
 " Office files
-filextype *.doc,*.docx,*.xls,*.xlsx libreoffice %f &
+filextype *.odt,*.ods,*.odp libreoffice %f &
+filextype *.doc,*.docx,*.xls,*.xlsx,*.ppt,*.pptx libreoffice %f  2> ~/.log/libreoffice.log &
 fileview *.docx, docx2txt.pl %f -
 
 " Qt projects
@@ -278,7 +284,7 @@ set vifminfo=dhistory,savedirs,chistory,state,tui,shistory,
 
 nnoremap s :shell<cr>
 " nnoremap S :sort<cr>
-nnoremap S :!tmux new-window<CR>
+" nnoremap S :!tmux new-window<CR>
 nnoremap w :view<cr>
 " nnoremap o :set vicmd='tmvi'<CR>l:set vicmd='vi'<CR>
 " nnoremap o :!tmvi %f<cr>
@@ -303,7 +309,7 @@ nnoremap A cw<c-w>
 " nnoremap ,t :!xterm &<cr>
 
 " Opening vim to edit .vifmrc
-nnoremap <Space>v :write | execute ':!vi $MYVIFMRC' | restart<cr>
+nnoremap <Space>v :write | execute ':!$EDITOR $MYVIFMRC' | restart<cr>
 " Opening gvim to edit .vifmrc
 " nnoremap ,C :!gvim --remote-tab-silent $MYVIFMRC &<cr>
 
@@ -323,13 +329,18 @@ noremap ; :
 noremap : ;
 noremap q; q:
 noremap <Space>c :copy<cr>
-noremap <Space>s :move<cr>
-noremap <Space>d :delete<cr>
+noremap <Space>d :move<cr>
 noremap <Space>m :mkdir<space>
 noremap <Space>q :q<CR>
+nnoremap S :!$TERMINAL<CR>
+nnoremap <C-o><C-i> :!urxvtc<CR>
 cnoremap <C-k> <Up>
 cnoremap <C-j> <Down>
 cnoremap <C-f> <C-g>
+
+command mount mount %f
+command umount umount %f
+command unzip unzip %f
 
 " gimp
 filetype *.xcf

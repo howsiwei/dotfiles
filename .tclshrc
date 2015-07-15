@@ -1,22 +1,28 @@
 #!/usr/bin/env tclsh
 
-namespace path ::tcl::mathop
+namespace import ::tcl::mathop::*
+namespace import ::tcl::mathfunc::*
 
 if {$tcl_interactive} {
-  package require tclreadline
-	namespace eval tclreadline {
-		proc prompt1 {} {
-			global env
-			if {[catch {set pwd [pwd]} tmp]} {
-				set pwd "unable to get pwd"
-			}
-			if [info exists env(HOME)] {
-				regsub $env(HOME) $pwd "~" pwd
-			}
-			return "$pwd% "
+    # Load packages which you frequently use here,
+    # before the rdl package, so that their commands
+    # are picked up for completion.
+    package require rdl
+    # namespace import rdl::ls
+    # rdl::use_xtermcd
+    rdl::add_namespace ::
+    # rdl::add_path /bin /usr/bin $env(HOME)/bin
+    catch {rdl::read_history}
+    rdl::history_max_length 10000
+    rename ::exit ::_history_write_exit
+    proc ::exit {{status 0}} {
+        catch {rdl::write_history}
+        ::_history_write_exit $status
+    }
+		proc rdl::prompt1 {} {
+			return {% }
 		}
-	}
-	set tcl_prompt2 " "
-  ::tclreadline::Loop
+    # The next command never returns
+    rdl::input_loop
 }
 

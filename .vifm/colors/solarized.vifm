@@ -1,7 +1,3 @@
-" vim: filetype=vifm :
-
-" Author: Stéphane (a.k.a. istib)
-
 highlight Win             cterm=none ctermfg=default    ctermbg=none
 
 highlight TopLine         cterm=none ctermfg=blue       ctermbg=none

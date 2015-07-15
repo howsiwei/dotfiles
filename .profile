@@ -9,7 +9,6 @@
 #umask 022
 
 light -S 4
-polipo &
 
 prepend_path() {
 	if test -d "$1"; then
@@ -28,5 +27,5 @@ prepend_path "$HOME/bin"
 export EDITOR=vim
 export VISUAL=vim
 export XDG_CONFIG_HOME="$HOME/.config"
-export http_proxy=http://localhost:8123/
+# export http_proxy=http://localhost:8123/
 

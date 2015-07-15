@@ -2,7 +2,6 @@
 	name = howsiwei
 	email = houxiwu@gmail.com
 [core]
-	editor = vi
 [alias]
 	lg = log --oneline
 	st = status
