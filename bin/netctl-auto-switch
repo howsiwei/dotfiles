@@ -1,0 +1,12 @@
+#!/bin/bash
+
+current_profile=$(netctl-auto current)
+
+for profile in "$@"; do
+	if [ "$profile" != "$current_profile" ]; then
+		echo $profile
+		sudo netctl-auto switch-to $profile
+		break
+	fi
+done
+

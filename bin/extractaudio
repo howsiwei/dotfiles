@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+
+file="$1"
+ext="$2"
+if test -z "$ext"; then
+	case $(file -b "$file") in
+		WebM) ext='ogg';;
+	esac
+fi
+ffmpeg -i "$file" -vn -c:a copy "${file%\.*}.$ext"

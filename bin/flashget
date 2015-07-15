@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+
+for flashpid in $(pgrep -f 'flash'); do
+	fd="/proc/$flashpid/fd"
+	if ! test -r "$fd"; then
+		sudo=sudo
+	fi
+	for video in $($sudo ls -l "$fd" | grep 'Flash' | awk '{print $9}'); do
+		echo "$fd/$video"
+	done
+done

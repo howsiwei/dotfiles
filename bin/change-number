@@ -1,0 +1,6 @@
+#!/usr/bin/env tclsh
+
+scan [lindex $::argv 1] %d num
+set op [lindex $::argv 0]
+
+puts [expr $num$op ]

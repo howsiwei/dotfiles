@@ -1,0 +1,16 @@
+#!/usr/bin/env sh
+
+op=$1
+shift
+files="$@"
+tmpdir=tmpdir
+mkdir $tmpdir
+
+for file in $files; do
+	mv "$file" "$tmpdir/$(echo $file | op=$op sed -r 's/([^0-9]*)([0-9]+)(.*)/echo "\1$(change-number $op \2)\3"/e')"
+done
+
+mv $tmpdir/* .
+
+rm -d $tmpdir
+

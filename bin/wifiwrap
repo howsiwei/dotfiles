@@ -1,0 +1,31 @@
+#!/bin/bash
+# wifi-mewnu wrapper script by oliver
+
+defaultWifiApp="netctl"
+
+pressAnyKey() {
+  echo "Press any key to close this window"
+  read key
+  exit 1
+}
+
+nodefaultWifiApp() {
+  echo
+  echo "You don't appear to have $defaultWifiApp installed"
+  echo "You must find an alternate method to control your wifi connection"
+  echo
+  pressAnyKey
+ }
+
+appError() {
+  echo
+  echo "If you see errors, run 'sudo wifi-menu' in a terminal after you've resolved them"
+  echo
+  pressAnyKey
+}
+
+pacman -Q $defaultWifiApp > /dev/null 2>&1 || nodefaultWifiApp
+
+sudo wifi-menu || appError
+
+exit 0

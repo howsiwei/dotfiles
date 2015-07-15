@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+
+raise-or-run "tabbed.tabbed" 'tabbed -d -p s+1 -o #333 -O #aaa -t #000 -T #ccc' &
+until wmctrl -lx | grep "tabbed.tabbed"; do
+	sleep 0.2
+done
+xid=`wmctrl -lx | grep "tabbed.tabbed" | cut -d' ' -f1`
+
+if [ "$#" = 0 ]; then
+	zathura --fork -e $xid
+fi
+for f in "$@"; do
+	zathura --fork -e $xid "$f"
+done
+

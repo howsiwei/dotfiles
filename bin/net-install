@@ -1,0 +1,113 @@
+#!/bin/bash
+# net install function based on ArchBang Light
+# WIP
+# Mr Green
+# for ArchBang Linux
+set -e -u -x
+shopt -s extglob
+
+# Check for required scripts
+[[ ! -f /usr/bin/pacstrap ]] && echo "Please install arch-install-scripts..." && exit
+
+# Are we root/sudo
+[[ ${EUID} -ne 0 ]] && echo "This script must be run as root." && exit
+
+# Directory to mount install device
+MNT=/mnt/install
+
+# Variables for source directories
+SOURCE=/tmp/source
+AIROOTFS=$SOURCE/archbang-light-master/airootfs
+
+# Main settings
+# Change to suit your own install
+# 
+USER_NAME="live"
+USER_PASSWORD=""
+ROOT_PASSWORD="archbang" # need a way to set password
+HOST_NAME="archbang" # change sed !!!!!
+KEYBOARD_MAP="us" # console map
+LOCALE_SETTING="en_US" # todo change sed below !!!!
+LOCAL_ZONE="Canada/Montreal" # Change too something like Europe/London, hwclock might be needed to set UTC/localtime
+DEVICE="sdx"
+
+# arch-chroot function
+arch_ci(){
+    arch-chroot $MNT "$@"
+}
+
+# test for $MNT
+[[ ! -d $MNT ]] && mkdir -p $MNT
+
+# Create a place to download source too, rest should make sense
+[[ ! -d $SOURCE ]] && mkdir $SOURCE
+cd $SOURCE
+wget https://github.com/mrgreen3/archbang-light/archive/master.zip -O master.zip
+unzip master.zip
+rm master.zip
+
+# Install base plus archbang packages, currently no aur support
+pacstrap $MNT base $(grep -h -v ^# $SOURCE/archbang-light-master/packages)
+
+# Add efi packages, add check for x86_64
+# messy might change!!!!
+[[ -d /sys/firmware/efi ]] && pacstrap $MNT $(grep -h -v ^# $SOURCE/archbang-light-master/efi_packages)
+#
+# Fstab with UUID
+genfstab -U -p $MNT >>$MNT/etc/fstab
+
+# Copy configs too new install
+cp -r $AIROOTFS/* $MNT
+
+# add variable for locale
+sed -i "s/#\(${LOCALE_SETTING}\.UTF-8\)/\1/" $MNT/etc/locale.gen
+arch_ci locale-gen
+
+# Sudo to allow no password
+#sed -i 's/# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/g' $MNT/etc/sudoers
+#chown -c root:root $MNT/etc/sudoers
+#chmod -c 0440 $MNT/etc/sudoers
+
+# Hostname
+echo $HOST_NAME > $MNT/etc/hostname
+
+#  Hosts file to archbang
+sed -i "0,/127.0.0.1/s/localhost/${HOST_NAME}/2" $MNT/etc/hosts
+
+# Vconsole
+echo "KEYMAP=${KEYBOARD_MAP}" > $MNT/etc/vconsole.conf
+echo "FONT=" >> $MNT/etc/vconsole.conf
+
+# Locale
+echo "LANG=${LOCALE_SETTING}.UTF-8" > $MNT/etc/locale.conf
+echo "LC_COLLATE=C" >> $MNT/etc/locale.conf
+
+# Set clock UTC or localtime (set by variable)
+arch_ci hwclock --systohc --utc
+
+# Timezone
+arch_ci ln -sf /usr/share/zoneinfo/${LOCAL_ZONE} /etc/localtime
+
+# Uncomment mirrors
+#sed -i "s/#Server/Server/g" $MNT/etc/pacman.d/mirrorlist
+
+# Set root password
+echo "root:$ROOT_PASSWORD" | chpasswd
+
+# Add user change 'live' to desired username
+arch_ci useradd -m -p "$USER_PASSWORD" -g users -G "adm,storage,optical,audio,video,network,wheel,power,lp,log" -s /bin/bash $USER_NAME
+arch_ci chown live /home/$USER_NAME
+
+# Start required systemd services
+arch_ci systemctl set-default multi-user.target 
+
+
+# Grub bootloader 
+# ask or test for sdx (device mounted)
+# arch_ci grub-install --target=i386-pc --recheck --debug $DEVICE
+# arch_ci grub-mkconfig -o /boot/grub/grub.cfg
+
+# Complete
+echo "Install of ArchBang complete..."
+echo "Umount devices mounted too /mnt/install"
+

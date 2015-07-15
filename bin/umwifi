@@ -1,0 +1,47 @@
+#!/usr/bin/phantomjs
+
+var system = require('system')
+var page = require('webpage').create()
+var url = system.args.length < 2 ? 'https://umwifilogin1.um.edu.my/guest/um_student.php?_browser=1' : system.args[1]
+var imgName = system.args.length < 3 ? 'umwifi.png' : system.args[2]
+
+function waitFor(test, onReady, timeOutMS) {
+	timeOutMS = timeOutMS || 2000
+	var start = new Date().getTime()
+	var interval = setInterval(function() {
+		// console.log('a')
+		if (test()) {
+			onReady()
+			clearInterval(interval)
+		} else if (new Date().getTime() - start >= timeOutMS) {
+			console.log('Timeout reached.')
+			phantom.exit(1)
+		}
+	}, 250)
+}
+
+page.open(url, function (status) {
+	console.log("Status: "+status)
+	if (status === 'success') {
+		page.evaluate(function() {
+			var form = document.forms[0]
+			form.user.value = 'howsiwei'
+			form.password.value = '1yangzhi'
+			form.visitor_accept_terms.checked = true
+			form.submit()
+		})
+		waitFor(function() {
+			return page.evaluate(function() {
+				// return document.getElementsByTagName('p').length !== 2 || document.title !== 'Welcome to UMWifi Student' || document.URL !== 'https://umwifilogin1.um.edu.my/guest/um_student.php?_browser=1'
+				return document.URL !== 'https://umwifilogin1.um.edu.my/guest/um_student.php?_browser=1'
+			})
+		}, function() {
+			// console.log(page.evaluate(function() {
+			// 		return [document.getElementsByTagName('p').length, document.title, document.URL]
+			// }))
+			phantom.exit()
+		})
+	} else {
+		phantom.exit(1)
+	}
+})

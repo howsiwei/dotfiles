@@ -1,0 +1,35 @@
+#!/bin/bash
+# add ArchAssault ^_^ repos
+# by Mr Green
+
+# test for root/sudo
+[[ ${EUID} -ne 0 ]] && echo "This script must be run as root....." && exit
+
+# add repo too pacman.conf
+echo "[archassault]" >> /etc/pacman.conf
+echo "Server = http://repo.archassault.org/archassault/\$repo/os/\$arch" >> /etc/pacman.conf
+
+# test for well 64bit
+if [[ $(uname -m) == "x86_64" ]]; then
+    echo "As you're running on x86_64 you will also need to enable (uncomment) [multilib] support from community if you haven't already:"
+fi
+
+# load keys required
+pacman-key -r CC1D2606 && pacman-key --lsign-key CC1D2606
+
+# Update and install required packages
+pacman -Syyu archassault-{keyring,mirrorlist,artwork}
+
+# Switch too ArchAssault background ;-)
+feh --bg-scale /usr/share/archassault/backgrounds/archassault-city1.jpg
+
+# Switch too using archassault mirrorlist
+sed -i "s|Server = http://repo.archassault.org/archassault/\$repo/os/\$arch|Include = /etc/pacman.d/archassault-mirrorlist|g" \
+       /etc/pacman.conf
+
+# As stated
+echo "Edit /etc/pacman.d/archassault-mirrorlist to your nearest server"
+
+echo "Then update again using sudo pacman -Syyu"
+
+
